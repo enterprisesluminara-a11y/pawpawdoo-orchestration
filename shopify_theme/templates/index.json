@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-cloud-bed",
+      "settings": {}
+    },
+    "comparison": {
+      "type": "comparison-matrix",
+      "settings": {}
+    },
+    "anatomy": {
+      "type": "product-anatomy",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "reviews-grid",
+      "settings": {}
+    },
+    "faq": {
+      "type": "sizing-faq",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "comparison",
+    "anatomy",
+    "reviews",
+    "faq"
+  ]
+}

@@ -1,0 +1,33 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "PawPawDoo DTC Revamp",
+    "theme_author": "PawPawDoo Multi-Agent Architecture",
+    "theme_version": "1.0.0",
+    "theme_documentation_url": "https://pawpawdoo.store",
+    "theme_support_url": "mailto:support@pawpawdoo.store"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "primary_color",
+        "label": "Primary Terracotta",
+        "default": "#C86432"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Espresso Text",
+        "default": "#37281D"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Cream Background",
+        "default": "#FAF8F5"
+      }
+    ]
+  }
+]

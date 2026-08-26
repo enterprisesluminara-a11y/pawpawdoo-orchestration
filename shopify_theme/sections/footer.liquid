@@ -1,0 +1,59 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      
+      <div class="footer-brand">
+        <div class="brand-logo-group" style="margin-bottom: 12px;">
+          <div class="logo-symbol">🐾</div>
+          <span class="brand-title" style="color: #fff;">PawPawDoo</span>
+        </div>
+        <p>
+          Dedicated to giving pets the healthiest, most comfortable sleep on earth. Veterinarian-approved orthopedic comfort with human-grade care.
+        </p>
+        <p style="margin-top: 10px; font-weight: 700; color: var(--color-terracotta);">Pawmily first. Always.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#hero">Orthopedic Cloud Bed</a></li>
+          <li><a href="#comparison">The PawPawDoo Difference</a></li>
+          <li><a href="#reviews">Verified Reviews</a></li>
+          <li><a href="#faq">Sizing Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Customer Care</h4>
+        <ul>
+          <li><a href="#">Track Your Order</a></li>
+          <li><a href="#">30-Night Return Policy</a></li>
+          <li><a href="#">Shipping & Delivery</a></li>
+          <li><a href="mailto:support@pawpawdoo.store">Contact Support</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Join the Pawmily VIP Club</h4>
+        <p style="font-size: 13.5px; color: #C2B3A7;">Get 10% off your first order plus free veterinary sleep wellness tips.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Welcome to the Pawmily! Check your email for your 10% code.');">
+          <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+          <button type="submit" class="newsletter-btn">Join</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div>© {{ 'now' | date: '%Y' }} PawPawDoo. All rights reserved. Built with love for dogs everywhere.</div>
+      <div>Privacy Policy • Terms of Service • Accessibility</div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,33 @@
+<header class="site-header">
+  <div class="container nav-wrapper">
+    <a href="/" class="brand-logo-group">
+      <div class="logo-symbol">🐾</div>
+      <span class="brand-title">PawPawDoo</span>
+      <span class="brand-tagline-pill">Pawmily first.</span>
+    </a>
+
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#hero">The Cloud Bed</a></li>
+        <li><a href="#comparison">Why PawPawDoo</a></li>
+        <li><a href="#anatomy">Orthopedic Science</a></li>
+        <li><a href="#reviews">14.8k+ Reviews</a></li>
+        <li><a href="#faq">Sizing & Care</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a href="/cart" class="cart-button">
+        <span>🛒 Cart</span>
+        <span class="cart-count">{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": []
+}
+{% endschema %}
