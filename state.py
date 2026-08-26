@@ -137,15 +137,31 @@ class GatekeeperAuditData(BaseModel):
 
 
 class PawPawDooState(TypedDict, total=False):
-    # Inputs
+    # Mission Brief & Chief of Staff Directives
+    mission_brief: Optional[Dict[str, Any]]
     product_request: Dict[str, Any]
     
-    # Agent Outputs
+    # Team Deliverables
     product_research: Optional[CompetitorResearchData]
     storefront_offer: Optional[StorefrontOfferData]
     ad_campaign: Optional[AdCampaignData]
     audit_report: Optional[GatekeeperAuditData]
     
+    # Hierarchical Team Lead Reviews & Circuit Breakers (max_retries=3)
+    sourcing_feedback: List[str]
+    sourcing_retry_count: int
+    sourcing_lead_verdict: Optional[str]  # "APPROVED" or "REJECT_WITH_FEEDBACK"
+
+    storefront_feedback: List[str]
+    storefront_retry_count: int
+    storefront_lead_verdict: Optional[str]  # "APPROVED" or "REJECT_WITH_FEEDBACK"
+
+    growth_feedback: List[str]
+    growth_retry_count: int
+    growth_lead_verdict: Optional[str]  # "APPROVED" or "REJECT_WITH_FEEDBACK"
+
+    chief_of_staff_verdict: Optional[Dict[str, Any]]
+
     # Orchestration & Self-Healing Feedback
     iteration_count: int
     max_iterations: int

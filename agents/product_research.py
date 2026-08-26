@@ -16,16 +16,25 @@ from adapters.trends_adapter import TrendsAdapter
 from agents.base import LLMClient
 from config import BRAND_NAME, MIN_MARKUP_MULTIPLIER
 from state import CompetitorResearchData, PawPawDooState, UndercutStrategy
+from utils.brand_memory import brand_memory
 
 
 def run_product_research_agent(state: PawPawDooState) -> Dict[str, Any]:
     """
     Executes deep competitor, marketplace, and logistics research for PawPawDoo.
     Model: Google Gemini
+    Queries RAG Brand Memory before execution and handles Sourcing Lead feedback loops.
     """
     product_req = state.get("product_request", {})
-    product_name = product_req.get("product_name", "Orthopedic Calming Cloud Dog Bed")
+    product_name = product_req.get("product_name", "Orthopedic Calming Cloud Pet Bed")
     niche = product_req.get("niche", "Pet Comfort & Sleep Wellness")
+    
+    # 0. Query RAG Brand Memory Layer
+    memory_context = brand_memory.get_formatted_context("Product Sourcing & Margins", product_name)
+
+    # Ingest Sourcing Lead Feedback if in a retry loop
+    sourcing_feedback = state.get("sourcing_feedback", [])
+    retry_count = state.get("sourcing_retry_count", 0)
     
     # Base costs & supplier simulation overrides if testing
     base_item_cost = float(product_req.get("base_item_cost", 14.50))

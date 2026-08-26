@@ -10,21 +10,32 @@ from typing import Any, Dict
 from agents.base import LLMClient
 from config import BRAND_NAME, BRAND_TAGLINE
 from state import AdCampaignData, AdCreative, PawPawDooState
+from utils.brand_memory import brand_memory
 
 
 def run_ad_strategist_agent(state: PawPawDooState) -> Dict[str, Any]:
     """
     Executes Direct-Response Ad Strategy.
     Model: Anthropic Claude
+    Queries RAG Brand Memory before execution and handles Growth Lead feedback loops.
     """
     research = state.get("product_research")
     storefront = state.get("storefront_offer")
     if not research or not storefront:
         raise ValueError("Product research and storefront offer must precede ad strategy.")
 
-    system_instruction = f"""You are the Lead Direct-Response Ad Strategist for {BRAND_NAME} DTC dropshipping.
+    # 0. Query RAG Brand Memory Layer
+    memory_context = brand_memory.get_formatted_context("Direct-Response Ad Creative & Hooks", research.product_name)
+
+    # Ingest Growth Lead Feedback if in a retry loop
+    growth_feedback = state.get("growth_feedback", [])
+    retry_count = state.get("growth_retry_count", 0)
+
+    system_instruction = f"""You are the Lead Direct-Response Ad Strategist for {BRAND_NAME} DTC pet dropshipping.
 Your job is to generate viral TikTok & Meta Reels ad creative frameworks designed for sub-$20 CPA.
-Core brand philosophy: '{BRAND_TAGLINE}' — heartfelt, emotional, yet hyper-tactical and urgency-driven."""
+Core brand philosophy: '{BRAND_TAGLINE}' — heartfelt, emotional, lifestyle-focused for BOTH dogs and cats, yet hyper-tactical and urgency-driven.
+
+{memory_context}"""
 
     prompt = f"""Generate direct response ad campaign creative for:
 Product: {research.product_name}
