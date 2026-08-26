@@ -4,6 +4,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initVariantSelectors();
   initBundleSelector();
   initCountdownTimer();
   initGallery();
@@ -12,11 +13,45 @@ document.addEventListener('DOMContentLoaded', () => {
   initSocialProofPopups();
 });
 
+// 0. Variant Selectors (Size & Color - Rule #13)
+let currentSelectedSize = 'M';
+let currentSelectedColor = 'Cloud Cream';
+
+function initVariantSelectors() {
+  const sizeBtns = document.querySelectorAll('.size-option-btn');
+  const sizeLabel = document.getElementById('selectedSizeLabel');
+  
+  sizeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      sizeBtns.forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      currentSelectedSize = btn.dataset.size;
+      if (sizeLabel && btn.dataset.label) {
+        sizeLabel.textContent = btn.dataset.label;
+      }
+    });
+  });
+
+  const colorBtns = document.querySelectorAll('.color-swatch-btn');
+  const colorLabel = document.getElementById('selectedColorLabel');
+  
+  colorBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      colorBtns.forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      currentSelectedColor = btn.dataset.color;
+      if (colorLabel) {
+        colorLabel.textContent = currentSelectedColor;
+      }
+    });
+  });
+}
+
 // 1. Bundle Selector & Checkout Engine
 const BUNDLE_DATA = {
   1: {
     quantity: 1,
-    title: '1x Cloud Dog Bed',
+    title: '1x Orthopedic Cloud Pet Bed',
     price: 78.95,
     compareAt: 102.64,
     savings: '$23.69 (Save 23%)',
@@ -27,11 +62,11 @@ const BUNDLE_DATA = {
   },
   2: {
     quantity: 2,
-    title: '2x Multi-Room Pack (Living Room + Bedroom)',
+    title: '2x Multi-Room / Multi-Pet Pack (Living Room + Bedroom)',
     price: 134.22,
     compareAt: 205.28,
     savings: '$71.06 (Save 15% Additional)',
-    badge: 'BEST VALUE — 68% OF CUSTOMERS CHOOSE THIS',
+    badge: 'BEST VALUE — 68% OF PET PARENTS CHOOSE THIS',
     bonus: 'Free Odor-Eliminating Paw Care Guide ($19.99 Value)',
     sku: 'DS-PPD-BED-002',
     variantId: '15345170022445'

@@ -121,7 +121,20 @@ def run_gatekeeper_auditor_agent(state: PawPawDooState) -> Dict[str, Any]:
                 )
             )
 
-    # 4. CRO & Mobile First Check (Rule 4)
+        # Rule 11 Check: Cat & Dog Dual Positioning (Warm lifestyle, not clinical)
+        text_corp = f"{storefront.hero_headline} {storefront.hero_subheadline} {' '.join(storefront.value_propositions)}".lower()
+        if "dog" in text_corp and "cat" not in text_corp and "pet" not in text_corp and "furry" not in text_corp:
+            brand_passed = False
+            violations.append(
+                AuditViolation(
+                    category="BRAND",
+                    description="Brand positioning over-indexes solely on dogs or lacks warm pet lifestyle tone.",
+                    rule_reference="Rule #11",
+                    suggested_fix="Position PawPawDoo as a warm, premium pet lifestyle brand for BOTH cats and dogs.",
+                )
+            )
+
+    # 4. CRO & Mobile First Check (Rules 4, 12, 13, 14)
     cro_passed = True
     if storefront:
         sticky_cta = storefront.sticky_cta_bar or {}

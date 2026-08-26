@@ -42,4 +42,8 @@ This file contains an evolving ruleset that improves over time. **At session sta
 8. [LOGISTICS] Always default to US warehouse for faster 3-5 day delivery if US vs China warehouse shipping cost diff <= $3.00 — superior customer experience and higher conversion.
 9. [DATA] Always include AliExpress Product ID & DSers SKU mapping in all research outputs for 1-click Shopify import — frictionless fulfillment and automation.
 10. [OPPORTUNITY] If a product fails the >=3.0x markup filter but has high viral/market demand, do not discard it — flag it as `[HIGH_POTENTIAL_UNDERCUT_OPPORTUNITY]` (🟠 Amber) and generate an undercut pricing + multi-pack bundle strategy to recover margin — captures high-volume viral traffic with backend margin recovery.
+11. [BRAND] Always position PawPawDoo as a warm, premium pet lifestyle brand for BOTH cats and dogs — avoid over-indexing solely on dogs or sounding like a clinical medical company.
+12. [UX] Always position the tagline 'Pawmily first.' directly underneath the PawPawDoo logo title — established layout specification.
+13. [CRO] Always require actual product showcase assets (including cat & dog lifestyle context, size/color variant selectors) on landing pages rather than standalone stock animal photos.
+14. [SKILLS] Equip Storefront Architect with dedicated UI/UX Design Taste, Direct-Response Copy, and E-Commerce Conversion Optimization skills.
 

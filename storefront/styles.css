@@ -172,12 +172,12 @@ button {
 .brand-logo-group {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .logo-symbol {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   background: var(--color-terracotta);
   border-radius: 10px;
   display: flex;
@@ -186,24 +186,28 @@ button {
   color: #fff;
   font-size: 20px;
   box-shadow: 0 4px 12px rgba(200, 100, 50, 0.25);
+  flex-shrink: 0;
+}
+
+.brand-text-block {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
 }
 
 .brand-title {
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 800;
   letter-spacing: -0.5px;
   color: var(--color-espresso);
 }
 
-.brand-tagline-pill {
-  background: var(--color-terracotta-light);
-  color: var(--color-terracotta);
-  font-size: 11px;
+.brand-tagline-sub {
+  font-size: 11.5px;
   font-weight: 700;
-  padding: 3px 9px;
-  border-radius: var(--radius-full);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  color: var(--color-terracotta);
+  letter-spacing: 0.3px;
+  margin-top: 1px;
 }
 
 .nav-links {
@@ -227,6 +231,114 @@ button {
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+/* Variant & Swatch Selectors (Rule #13) */
+.variant-selection-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--color-cream-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.variant-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--color-espresso);
+}
+
+.variant-value-highlight {
+  color: var(--color-terracotta);
+  font-weight: 800;
+}
+
+.size-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.size-option-btn {
+  background: var(--color-cream);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 4px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.size-option-btn:hover {
+  border-color: #D6A487;
+  background: #FFFDFC;
+}
+
+.size-option-btn.selected {
+  border-color: var(--color-terracotta);
+  background: var(--color-terracotta-light);
+  box-shadow: 0 2px 8px rgba(200, 100, 50, 0.15);
+}
+
+.size-name {
+  font-weight: 800;
+  font-size: 13.5px;
+  color: var(--color-espresso);
+}
+
+.size-sub {
+  font-size: 10.5px;
+  color: var(--color-espresso-muted);
+  font-weight: 600;
+}
+
+.color-swatches-grid {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.color-swatch-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--color-cream);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-espresso);
+  transition: var(--transition-fast);
+}
+
+.color-swatch-btn:hover {
+  border-color: #D6A487;
+}
+
+.color-swatch-btn.selected {
+  border-color: var(--color-terracotta);
+  background: #FFFDFB;
+  box-shadow: 0 2px 8px rgba(200, 100, 50, 0.15);
+}
+
+.swatch-circle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.15);
+  display: inline-block;
 }
 
 .cart-button {
