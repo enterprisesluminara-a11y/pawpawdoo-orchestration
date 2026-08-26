@@ -1,6 +1,7 @@
 /**
- * PawPawDoo Flagship DTC E-Commerce JavaScript Engine
+ * PawPawDoo Flagship Storefront Interactive Engine
  * Brand: PawPawDoo | Slogan: "Pawmily first."
+ * Real Product: PawPawDoo Cozy Nest Bed
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLiveSalesToasts();
 });
 
-// 1. Interactive Gallery
+// 1. Real Product Image Gallery
 function initGallery() {
   const thumbs = document.querySelectorAll('.thumb-card');
   const mainPhoto = document.getElementById('mainHeroPhoto');
@@ -29,15 +30,15 @@ function initGallery() {
         setTimeout(() => {
           mainPhoto.src = targetSrc;
           mainPhoto.style.opacity = '1';
-        }, 150);
+        }, 120);
       }
     });
   });
 }
 
-// 2. Variant Customizer (Size & Color)
-let currentSize = 'M';
-let currentColor = 'Cream Velvet';
+// 2. Variant Customizer (Real Sizes & Real Product Colors)
+let currentSize = '60cm';
+let currentColor = 'Gradient Light Gray';
 
 function initVariantCustomizer() {
   const sizeChips = document.querySelectorAll('.size-chip');
@@ -58,12 +59,6 @@ function initVariantCustomizer() {
   const colorDisplay = document.getElementById('colorValueDisplay');
   const mainPhoto = document.getElementById('mainHeroPhoto');
 
-  const colorToImageMap = {
-    'Cream Velvet': 'https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=1000&q=80',
-    'Terracotta Cloud': 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=1000&q=80',
-    'Slate Grey': 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=80'
-  };
-
   colorCards.forEach(card => {
     card.addEventListener('click', () => {
       colorCards.forEach(c => c.classList.remove('selected'));
@@ -72,51 +67,52 @@ function initVariantCustomizer() {
       if (colorDisplay) {
         colorDisplay.textContent = currentColor;
       }
-      if (mainPhoto && colorToImageMap[currentColor]) {
+      const targetImg = card.dataset.img;
+      if (mainPhoto && targetImg) {
         mainPhoto.style.opacity = '0.3';
         setTimeout(() => {
-          mainPhoto.src = colorToImageMap[currentColor];
+          mainPhoto.src = targetImg;
           mainPhoto.style.opacity = '1';
-        }, 150);
+        }, 120);
       }
     });
   });
 }
 
-// 3. Bundle Tiers & Checkout Engine
+// 3. 3-Tier Bundles with Real Store Pricing
 const BUNDLES = {
   1: {
     tier: 1,
     quantity: 1,
-    title: '1x Calming Cloud Pet Bed',
-    price: 78.95,
-    compareAt: 102.64,
-    saveText: '23%',
-    variantId: '15345953112109'
+    title: '1x Cozy Nest Bed',
+    price: 56.77,
+    compareAt: 74.00,
+    saveText: 'Single Pack',
+    variantId: '67412396048429'
   },
   2: {
     tier: 2,
     quantity: 2,
-    title: '2x Multi-Room / Multi-Pet Pack',
-    price: 134.22,
-    compareAt: 205.28,
-    saveText: '35%',
+    title: '2x Multi-Room Pack (Living Room + Bedroom)',
+    price: 96.50,
+    compareAt: 148.00,
+    saveText: '15%',
     badge: 'Save 15%',
-    variantId: '15345953112109'
+    variantId: '67412396048429'
   },
   3: {
     tier: 3,
     quantity: 3,
-    title: '3x Ultimate Fur-Family Pack',
-    price: 185.53,
-    compareAt: 307.92,
-    saveText: '40%',
+    title: '3x Multi-Pet / Whole Home Bundle',
+    price: 133.40,
+    compareAt: 222.00,
+    saveText: '22%',
     badge: 'Save 22%',
-    variantId: '15345953112109'
+    variantId: '67412396048429'
   }
 };
 
-let currentTier = 2; // Default to Tier 2 (Most Popular)
+let currentTier = 2; // Default to 2-Pack
 
 function initBundleTiers() {
   const cards = document.querySelectorAll('.bundle-tier-card');
@@ -134,7 +130,7 @@ function initBundleTiers() {
       const b = BUNDLES[currentTier];
 
       if (mainCtaText) {
-        mainCtaText.textContent = `Claim Your Pack — $${b.price.toFixed(2)} (Save ${b.saveText})`;
+        mainCtaText.textContent = `Claim ${b.title} — $${b.price.toFixed(2)} (${b.tier === 1 ? 'Free Shipping' : 'Save ' + b.saveText})`;
       }
       if (stickyPriceText) {
         stickyPriceText.textContent = `$${b.price.toFixed(2)}`;
@@ -223,7 +219,7 @@ function initStickyCtaBar() {
 function initLiveSalesToasts() {
   const cities = ['Austin, TX', 'Seattle, WA', 'Denver, CO', 'Chicago, IL', 'San Diego, CA', 'Miami, FL', 'Nashville, TN'];
   const parents = ['Sarah & Duke 🐕', 'Elena & Oliver 🐱', 'Chloe & Dave 🐾', 'Marcus & Luna 🐶', 'Jessica & Cleo 🐱'];
-  const bundles = ['2-Pack Multi-Room (Cream Velvet)', '1x Calming Bed (Terracotta Cloud)', '3-Pack Fur-Family (Slate Grey)'];
+  const bundles = ['2-Pack Multi-Room (Light Gray)', '1x Cozy Nest Bed (Rose)', '3-Pack Whole Home (Dark Gray)'];
 
   const toast = document.createElement('div');
   toast.className = 'live-sale-toast';
