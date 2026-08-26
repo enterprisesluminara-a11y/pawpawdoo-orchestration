@@ -4,33 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PawPawDoo — Calming Cloud Pet Bed | Pawmily first.</title>
-  <meta name="description" content="Ultra-soft calming cloud bed for dogs & cats. Cozy faux-fur nesting bolsters, waterproof odor shield, and gentle joint relief. Fast 3-5 day US delivery.">
+  <meta name="description" content="Ultra-plush orthopedic calming cloud bed for dogs & cats. 360° nesting bolsters, waterproof odor shield, and gentle joint relief. Fast 3-5 day US delivery.">
   
-  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Main Stylesheet -->
+  <!-- Flagship Stylesheet -->
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <!-- 1. Top Announcement Bar -->
   <aside class="announcement-bar">
-    <div class="ticker-content">
+    <div class="announcement-content">
       <span class="pulse-dot"></span>
-      <span><strong>FLASH SALE:</strong> Save up to 22% Off + Free 3–5 Day US Delivery (USPS Priority)</span>
-      <span>• Ends in: <span class="timer-pill" id="flashSaleTimer">04:38:15</span></span>
-      <span>• Use Code: <strong>PAWMILY</strong></span>
+      <span><strong>LIMITED FLASH SALE:</strong> Save up to 22% Off Multi-Packs + Free 3–5 Day US Delivery</span>
+      <span>• Ends in: <span class="timer-tag" id="flashTimer">04:38:15</span></span>
+      <span>• Code: <strong>PAWMILY</strong></span>
     </div>
   </aside>
 
-  <!-- 2. Header & Vertical Brand Lockup (Rule #12: Tagline Underneath Title) -->
+  <!-- 2. Sticky Navigation Header -->
   <header class="site-header">
     <div class="container nav-wrapper">
       
-      <!-- Brand Lockup (Rule #12: Logo + Tagline Directly Underneath) -->
+      <!-- Brand Lockup: Vertical Stack (Rule #12: Logo + Tagline Directly Underneath) -->
       <a href="#" class="brand-lockup">
         <img 
           src="https://cdn.shopify.com/s/files/1/0773/4620/9837/files/pawpawdoo-lockup-final.svg?v=1787297952" 
@@ -47,221 +47,235 @@
           <li><a href="#hero">The Cloud Bed</a></li>
           <li><a href="#comparison">Why PawPawDoo</a></li>
           <li><a href="#anatomy">Cozy Science</a></li>
-          <li><a href="#reviews">2,500+ Pet Parents</a></li>
+          <li><a href="#reviews">2,500+ Happy Paws</a></li>
           <li><a href="#faq">Sizing & Care</a></li>
         </ul>
       </nav>
 
       <!-- Cart Button -->
-      <div class="header-actions">
-        <button class="cart-button trigger-checkout">
+      <div>
+        <button class="header-cta-btn trigger-checkout">
           <span>🛒 Cart</span>
-          <span class="cart-count">2</span>
+          <span class="cart-pill" id="headerCartCount">2</span>
         </button>
       </div>
 
     </div>
   </header>
 
-  <!-- 3. Hero Section (Split Gallery & Buy Box) -->
+  <!-- 3. Ambient Peeking Cat & Dog Welcome Strip -->
+  <div class="peeking-banner-strip">
+    <div class="peeking-banner-inner">
+      <img 
+        src="assets/hero-cat-and-dog-banner.png" 
+        alt="PawPawDoo Fur-Family Dogs and Cats" 
+        class="peeking-banner-img"
+        onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80';"
+      >
+    </div>
+  </div>
+
+  <!-- 4. Flagship Hero Section -->
   <main>
     <section class="hero-section" id="hero">
       <div class="container hero-grid">
         
-        <!-- Left: Product Lifestyle & Multi-Angle Showcase (Rule #13: Exact Peeking Cats & Dogs Banner) -->
-        <div class="gallery-wrapper">
-          <div class="main-image-container">
-            <span class="badge-overlay-top-left">🔥 68% Choose Multi-Pack</span>
-            <span class="badge-overlay-top-right">🛡️ 30-Night Guarantee</span>
+        <!-- Left: Interactive Gallery -->
+        <div class="gallery-sticky-wrapper">
+          <div class="main-stage-container">
+            <span class="badge-overlay badge-top-left">🔥 68% Choose Multi-Pack</span>
+            <span class="badge-overlay badge-top-right">🛡️ 30-Night Guarantee</span>
             <img 
-              id="mainHeroImage" 
-              class="main-hero-img" 
-              src="assets/hero-cat-and-dog-banner.png" 
-              alt="PawPawDoo Calming Cloud Pet Bed with Dogs & Cats"
+              id="mainHeroPhoto" 
+              class="main-hero-photo" 
+              src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=1000&q=80" 
+              alt="PawPawDoo Calming Cloud Pet Bed in Cream Velvet"
               onerror="this.onerror=null;this.src='assets/hero-cat-and-dog-banner.png';"
             >
           </div>
 
-          <div class="thumbnails-row">
-            <div class="thumb-item active" data-full-src="assets/hero-cat-and-dog-banner.png">
-              <img src="assets/hero-cat-and-dog-banner.png" alt="Dogs and Cats Peeking Cloud Haven" onerror="this.onerror=null;this.src='assets/hero-cat-and-dog-banner.png';">
+          <div class="thumbnails-strip">
+            <div class="thumb-card active" data-src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=1000&q=80">
+              <img src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=250&q=80" alt="Dog Snuggled in Cloud Bed" onerror="this.onerror=null;this.src='assets/hero-cat-and-dog-banner.png';">
             </div>
-            <div class="thumb-item" data-full-src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=1000&q=80">
-              <img src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=200&q=80" alt="Dog Snuggled in Cloud Bed" onerror="this.onerror=null;this.src='assets/hero-cat-and-dog-banner.png';">
+            <div class="thumb-card" data-src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1000&q=80">
+              <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=250&q=80" alt="Cat Deep Nesting in Cloud Bolster" onerror="this.onerror=null;this.src='assets/hero-cat-and-dog-banner.png';">
             </div>
-            <div class="thumb-item" data-full-src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1000&q=80">
-              <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=200&q=80" alt="Cat Deep Nesting in Cloud Bolster" onerror="this.onerror=null;this.src='assets/hero-cat-and-dog-banner.png';">
+            <div class="thumb-card" data-src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=1000&q=80">
+              <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=250&q=80" alt="Puppy Sound Asleep" onerror="this.onerror=null;this.src='assets/hero-cat-and-dog-banner.png';">
             </div>
-            <div class="thumb-item" data-full-src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=1000&q=80">
-              <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=200&q=80" alt="Puppy Sound Asleep in Cloud Bed" onerror="this.onerror=null;this.src='assets/hero-cat-and-dog-banner.png';">
+            <div class="thumb-card" data-src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=80">
+              <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=250&q=80" alt="Orthopedic Foam & Waterproof Liner" onerror="this.onerror=null;this.src='assets/hero-cat-and-dog-banner.png';">
             </div>
           </div>
         </div>
 
-        <!-- Right: High-Converting Buy Box & Variant Selector -->
-        <div class="hero-content">
+        <!-- Right: Buy Box & Product Offer -->
+        <div class="buy-box-column">
           
-          <div class="social-rating-pill">
-            <span class="stars">★★★★★</span>
-            <span class="rating-score">4.9 / 5.0</span>
-            <span class="reviews-count">(2,500+ Happy Paws)</span>
+          <div class="social-proof-rating">
+            <span class="rating-stars">★★★★★</span>
+            <span>4.9 / 5.0</span>
+            <span class="reviews-count-tag">(2,500+ Happy Paws)</span>
           </div>
 
-          <h1 class="hero-headline">Give Your Furry Best Friends The Cloud Sleep They Deserve — Because It's <span style="color: var(--color-terracotta);">Pawmily first.</span></h1>
+          <h1 class="product-title">Give Your Furry Best Friends The Cloud Sleep They Deserve — Because It's <span style="color: var(--color-terracotta);">Pawmily first.</span></h1>
           
-          <p class="hero-subheadline">
-            Warm, ultra-plush calming cloud comfort for both dogs and cats. Melts daily anxiety, cradles tired joints, and creates an irresistible nesting haven in your home.
+          <p class="product-subtitle">
+            Warm, ultra-plush calming cloud comfort for both dogs and cats. Melts daily stress, cushions tired joints, and creates an irresistible nesting haven in your home.
           </p>
 
-          <div class="logistics-banner-card">
-            <div class="icon">🚀</div>
-            <div class="text">
-              <strong>Fast Local Dispatch:</strong> Ships in 3–5 Days from US Warehouse (Tracked USPS Priority).
-            </div>
+          <div class="dispatch-pill-card">
+            <span class="icon">🚀</span>
+            <span><strong>Fast Local Dispatch:</strong> Ships in 3–5 Days from US Warehouse (Tracked USPS Priority).</span>
           </div>
 
-          <ul class="value-props-list">
-            <li><span class="check-icon">✓</span> <span><strong>All-Pet Nesting Bolster:</strong> 360° soothing faux-fur rim provides instant security for dogs & cats.</span></li>
-            <li><span class="check-icon">✓</span> <span><strong>Gentle Pressure Relief:</strong> High-density memory foam prevents morning stiffness and aches.</span></li>
-            <li><span class="check-icon">✓</span> <span><strong>100% Machine Washable:</strong> Removable zippered waterproof lining resists slobber, fur, and accidents.</span></li>
-            <li><span class="check-icon">✓</span> <span><strong>Non-Slip Gripper Base:</strong> Stays safely anchored on hardwood and tile floors.</span></li>
+          <ul class="benefits-checklist">
+            <li>
+              <span class="check-badge">✓</span>
+              <span><strong>360° Calming Bolsters:</strong> Mom's-coat faux fur relieves anxiety & triggers instant relaxation for dogs and cats.</span>
+            </li>
+            <li>
+              <span class="check-badge">✓</span>
+              <span><strong>High-Density Memory Foam:</strong> Prevents painful morning stiffness and cushions joints.</span>
+            </li>
+            <li>
+              <span class="check-badge">✓</span>
+              <span><strong>100% Machine Washable:</strong> Removable zippered cover with waterproof odor-shield liner.</span>
+            </li>
+            <li>
+              <span class="check-badge">✓</span>
+              <span><strong>Non-Skid Gripper Base:</strong> Stays safely anchored during zoomies and playful jumps.</span>
+            </li>
           </ul>
 
-          <!-- Buy Box Container with Embedded Variants (Rules #11, #13) -->
-          <div class="buy-box-container">
+          <!-- Customizer: Size & Color -->
+          <div class="variant-customizer-box">
             
-            <!-- Variant Customizer (Size & Color) -->
-            <div class="variant-picker-section">
-              
-              <!-- Size Selector -->
-              <div>
-                <div class="variant-picker-title-row">
-                  <span>Select Size:</span>
-                  <span class="variant-highlight" id="selectedSizeDisplay">Medium (32") — Dogs & Cats (25–50 lbs)</span>
-                </div>
-                <div class="size-selector-grid" style="margin-top: 8px;">
-                  <div class="size-btn" data-size="S" data-label="Small (24&quot;) — Cats & Small Pups (Up to 25 lbs)">
-                    <span class="size-title">🐱 Small (24")</span>
-                    <span class="size-meta">&lt; 25 lbs</span>
-                  </div>
-                  <div class="size-btn selected" data-size="M" data-label="Medium (32&quot;) — Dogs & Cats (25–50 lbs)">
-                    <span class="size-title">🐶 Medium (32")</span>
-                    <span class="size-meta">25–50 lbs</span>
-                  </div>
-                  <div class="size-btn" data-size="L" data-label="Large (40&quot;) — Large Dogs (50–80 lbs)">
-                    <span class="size-title">🐕 Large (40")</span>
-                    <span class="size-meta">50–80 lbs</span>
-                  </div>
-                  <div class="size-btn" data-size="XL" data-label="Extra Large (48&quot;) — Giant Breeds & Pairs (80+ lbs)">
-                    <span class="size-title">🐾 XL (48")</span>
-                    <span class="size-meta">80+ lbs</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Color Swatch Selector -->
-              <div>
-                <div class="variant-picker-title-row">
-                  <span>Select Color:</span>
-                  <span class="variant-highlight" id="selectedColorDisplay">Cream Velvet</span>
-                </div>
-                <div class="color-swatches-grid" style="margin-top: 8px;">
-                  <div class="color-swatch-btn selected" data-color="Cream Velvet">
-                    <span class="swatch-dot" style="background-color: #FAF5EE;"></span>
-                    <span>Cream Velvet</span>
-                  </div>
-                  <div class="color-swatch-btn" data-color="Terracotta Cloud">
-                    <span class="swatch-dot" style="background-color: #C86432;"></span>
-                    <span>Terracotta Cloud</span>
-                  </div>
-                  <div class="color-swatch-btn" data-color="Slate Grey">
-                    <span class="swatch-dot" style="background-color: #6B6560;"></span>
-                    <span>Slate Grey</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- 3-Tier Multi-Pack Bundle Selection -->
+            <!-- Size Selector -->
             <div>
-              <div class="bundle-section-header" style="margin-bottom: 12px;">
-                <span class="bundle-section-title">Choose Your Bundle:</span>
-                <span class="live-viewers-tag">⚡ 48 pet parents viewing</span>
+              <div class="variant-header-row">
+                <span>Select Size:</span>
+                <span class="variant-selected-value" id="sizeValueDisplay">Medium (32") — Dogs & Cats (25–50 lbs)</span>
               </div>
-
-              <div class="bundle-cards-list">
-                
-                <!-- Tier 1 -->
-                <div class="bundle-card" data-tier="1">
-                  <div class="bundle-radio"></div>
-                  <div class="bundle-info">
-                    <h4>1x Calming Cloud Pet Bed</h4>
-                    <p>Standard Single Room Pack</p>
-                  </div>
-                  <div class="bundle-price-col">
-                    <div class="price-main">$78.95</div>
-                    <div class="price-compare">$102.64</div>
-                  </div>
+              <div class="size-chips-grid" style="margin-top: 8px;">
+                <div class="size-chip" data-size="S" data-label="Small (24&quot;) — Cats & Small Pups (Up to 25 lbs)">
+                  <span class="chip-name">🐱 Small (24")</span>
+                  <span class="chip-weight">&lt; 25 lbs</span>
                 </div>
-
-                <!-- Tier 2 (Selected by default) -->
-                <div class="bundle-card selected" data-tier="2">
-                  <span class="bundle-ribbon popular">68% CHOOSE THIS — BEST VALUE</span>
-                  <div class="bundle-radio"></div>
-                  <div class="bundle-info">
-                    <h4>2x Multi-Room / Multi-Pet Pack (Living Room + Bedroom)</h4>
-                    <p><span class="bundle-bonus-pill">+ Free Odor-Eliminating Paw Care Guide</span></p>
-                  </div>
-                  <div class="bundle-price-col">
-                    <div class="price-main">$134.22</div>
-                    <div class="price-compare">$205.28</div>
-                    <div style="font-size: 11px; color: var(--color-terracotta); font-weight: 700;">SAVE 15%</div>
-                  </div>
+                <div class="size-chip selected" data-size="M" data-label="Medium (32&quot;) — Dogs & Cats (25–50 lbs)">
+                  <span class="chip-name">🐶 Medium (32")</span>
+                  <span class="chip-weight">25–50 lbs</span>
                 </div>
-
-                <!-- Tier 3 -->
-                <div class="bundle-card" data-tier="3">
-                  <span class="bundle-ribbon">MAXIMUM SAVINGS</span>
-                  <div class="bundle-radio"></div>
-                  <div class="bundle-info">
-                    <h4>3x Ultimate Fur-Family Pack (Multi-Pet Household)</h4>
-                    <p><span class="bundle-bonus-pill">+ Free Spare Waterproof Cover & Grooming Glove</span></p>
-                  </div>
-                  <div class="bundle-price-col">
-                    <div class="price-main">$185.53</div>
-                    <div class="price-compare">$307.92</div>
-                    <div style="font-size: 11px; color: var(--color-terracotta); font-weight: 700;">SAVE 22%</div>
-                  </div>
+                <div class="size-chip" data-size="L" data-label="Large (40&quot;) — Large Dogs (50–80 lbs)">
+                  <span class="chip-name">🐕 Large (40")</span>
+                  <span class="chip-weight">50–80 lbs</span>
                 </div>
-
+                <div class="size-chip" data-size="XL" data-label="Extra Large (48&quot;) — Giant Breeds & Pairs (80+ lbs)">
+                  <span class="chip-name">🐾 XL (48")</span>
+                  <span class="chip-weight">80+ lbs</span>
+                </div>
               </div>
             </div>
 
-            <!-- Primary 1-Click CTA Button -->
+            <!-- Color Swatches -->
             <div>
-              <button class="btn-primary-cta trigger-checkout" id="mainCtaButton">
-                <span id="mainCtaText">Claim Your Multi-Room Pack — $134.22 (Save 35%)</span>
-                <span>➔</span>
-              </button>
-              
-              <div class="guarantee-micro-note" style="margin-top: 10px;">
-                <span>🛡️ 30-Night 'Happy Paws' Guarantee</span>
-                <span>•</span>
-                <span>📦 Free Express US Delivery</span>
-                <span>•</span>
-                <span>🔒 256-Bit SSL Encrypted</span>
+              <div class="variant-header-row">
+                <span>Select Color:</span>
+                <span class="variant-selected-value" id="colorValueDisplay">Cream Velvet</span>
               </div>
-
-              <div class="payment-badges-row" style="margin-top: 10px;">
-                <span>Guaranteed Safe Checkout:</span>
-                <span>💳 Apple Pay</span>
-                <span>💳 Google Pay</span>
-                <span>💳 Visa / Mastercard</span>
-                <span>💳 Shop Pay</span>
+              <div class="color-swatches-row" style="margin-top: 8px;">
+                <div class="color-swatch-card selected" data-color="Cream Velvet">
+                  <span class="swatch-circle" style="background-color: #FAF5EE;"></span>
+                  <span>Cream Velvet</span>
+                </div>
+                <div class="color-swatch-card" data-color="Terracotta Cloud">
+                  <span class="swatch-circle" style="background-color: #C86432;"></span>
+                  <span>Terracotta Cloud</span>
+                </div>
+                <div class="color-swatch-card" data-color="Slate Grey">
+                  <span class="swatch-circle" style="background-color: #6B6560;"></span>
+                  <span>Slate Grey</span>
+                </div>
               </div>
             </div>
 
+          </div>
+
+          <!-- 3-Tier Bundles -->
+          <div class="bundle-selector-wrap">
+            <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; margin-bottom: 2px;">
+              <span>Choose Your Package:</span>
+              <span style="color: var(--color-terracotta);">⚡ 48 pet parents viewing</span>
+            </div>
+
+            <!-- Tier 1 -->
+            <div class="bundle-tier-card" data-tier="1">
+              <div class="bundle-radio-circle"></div>
+              <div class="bundle-tier-info">
+                <h4>1x Calming Cloud Pet Bed</h4>
+                <p>Standard Single Room Pack</p>
+              </div>
+              <div class="bundle-pricing-col">
+                <div class="bundle-price-main">$78.95</div>
+                <div class="bundle-price-compare">$102.64</div>
+              </div>
+            </div>
+
+            <!-- Tier 2 (Selected by default) -->
+            <div class="bundle-tier-card selected" data-tier="2">
+              <span class="bundle-ribbon-tag">68% CHOOSE THIS — BEST VALUE</span>
+              <div class="bundle-radio-circle"></div>
+              <div class="bundle-tier-info">
+                <h4>2x Multi-Room / Multi-Pet Pack</h4>
+                <p>Living Room + Bedroom <span class="bonus-tag">+ Free Paw Care Guide</span></p>
+              </div>
+              <div class="bundle-pricing-col">
+                <div class="bundle-price-main">$134.22</div>
+                <div class="bundle-price-compare">$205.28</div>
+                <div style="font-size: 11px; color: var(--color-terracotta); font-weight: 800;">SAVE 15%</div>
+              </div>
+            </div>
+
+            <!-- Tier 3 -->
+            <div class="bundle-tier-card" data-tier="3">
+              <span class="bundle-ribbon-tag">MAXIMUM SAVINGS</span>
+              <div class="bundle-radio-circle"></div>
+              <div class="bundle-tier-info">
+                <h4>3x Ultimate Fur-Family Pack</h4>
+                <p>Multi-Pet Household <span class="bonus-tag">+ Free Cover & Groom Glove</span></p>
+              </div>
+              <div class="bundle-pricing-col">
+                <div class="bundle-price-main">$185.53</div>
+                <div class="bundle-price-compare">$307.92</div>
+                <div style="font-size: 11px; color: var(--color-terracotta); font-weight: 800;">SAVE 22%</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Primary CTA Button -->
+          <div>
+            <button class="btn-flagship-cta trigger-checkout" id="mainCtaButton">
+              <span id="mainCtaButtonText">Claim Your Multi-Room Pack — $134.22 (Save 35%)</span>
+              <span>➔</span>
+            </button>
+
+            <div class="guarantee-micro-grid" style="margin-top: 12px;">
+              <span>🛡️ 30-Night 'Happy Paws' Guarantee</span>
+              <span>•</span>
+              <span>📦 Free 3–5 Day US Delivery</span>
+              <span>•</span>
+              <span>🔒 256-Bit Encrypted</span>
+            </div>
+
+            <div class="payment-badges-strip" style="margin-top: 10px;">
+              <span>Guaranteed Safe Checkout:</span>
+              <span>💳 Apple Pay</span>
+              <span>💳 Google Pay</span>
+              <span>💳 Visa / Mastercard</span>
+              <span>💳 Shop Pay</span>
+            </div>
           </div>
 
         </div>
@@ -269,11 +283,11 @@
       </div>
     </section>
 
-    <!-- 4. Press & Trust Bar -->
-    <section class="press-bar-section">
+    <!-- 5. Press / Editorial Logos Strip -->
+    <section class="press-strip-section">
       <div class="container">
-        <div class="press-bar-title">As Featured In Leading Pet Lifestyle & Wellness Publications</div>
-        <div class="press-logos-grid">
+        <div class="press-title">As Featured In Leading Pet Lifestyle & Wellness Publications</div>
+        <div class="press-logos-row">
           <div class="press-logo-item">🐾 MODERN PETS</div>
           <div class="press-logo-item">🦴 PET COMFORT LIVING</div>
           <div class="press-logo-item">🐕 CANINE & FELINE TODAY</div>
@@ -283,42 +297,38 @@
       </div>
     </section>
 
-    <!-- 5. Problem vs Solution Comparison Matrix (Cats & Dogs Focus) -->
+    <!-- 6. Comparison Section -->
     <section class="comparison-section" id="comparison">
       <div class="container">
-        <div class="section-header">
-          <div class="section-tag">The PawPawDoo Difference</div>
-          <h2 class="section-title">Why Generic Supermarket Pet Beds Fall Short</h2>
-          <p class="section-desc">Most pet beds flatten in 2 weeks, leaving your dog or cat resting on cold, hard floors. Here is how PawPawDoo brings warm, cloud comfort home.</p>
+        <div class="section-head-center">
+          <div class="section-eyebrow">The PawPawDoo Difference</div>
+          <h2 class="section-headline">Why Generic Supermarket Pet Beds Fail Your Pets</h2>
+          <p class="section-desc">Most pet beds flatten in 14 days, leaving your dog or cat resting on cold, hard flooring. Here is how PawPawDoo engineers pure cloud support.</p>
         </div>
 
-        <div class="comparison-grid">
+        <div class="comparison-cards-grid">
           
-          <!-- Bad: Supermarket Beds -->
-          <div class="comparison-card bad">
-            <div class="comp-header">
-              <span class="comp-badge bad-badge">❌ Generic Supermarket Beds</span>
-            </div>
-            <ul class="comp-list">
-              <li><span class="icon-bad">✕</span> <span>Cheap recycled polyfill that flattens in 14 days.</span></li>
-              <li><span class="icon-bad">✕</span> <span>No neck or spine support, leading to stiff joints.</span></li>
-              <li><span class="icon-bad">✕</span> <span>Impossible to wash — traps fur, slobber, and foul odors.</span></li>
-              <li><span class="icon-bad">✕</span> <span>Slides dangerously across tile and hardwood floors.</span></li>
-              <li><span class="icon-bad">✕</span> <span>No return trial — wasted money if your pet avoids it.</span></li>
+          <!-- Bad -->
+          <div class="comp-card bad">
+            <span class="comp-badge-pill bad">❌ Generic Supermarket Beds</span>
+            <ul class="comp-list-items">
+              <li><span class="icon-cross">✕</span> <span>Cheap recycled polyfill collapses to floor within 2 weeks.</span></li>
+              <li><span class="icon-cross">✕</span> <span>Zero spine support, triggering morning joint stiffness.</span></li>
+              <li><span class="icon-cross">✕</span> <span>Impossible to wash — traps dander, moisture, and foul odors.</span></li>
+              <li><span class="icon-cross">✕</span> <span>Dangerous sliding across tile and hardwood floors.</span></li>
+              <li><span class="icon-cross">✕</span> <span>No return trial — wasted money if your pet avoids it.</span></li>
             </ul>
           </div>
 
-          <!-- Good: PawPawDoo -->
-          <div class="comparison-card good">
-            <div class="comp-header">
-              <span class="comp-badge good-badge">✓ PawPawDoo Calming Cloud Pet Bed</span>
-            </div>
-            <ul class="comp-list">
-              <li><span class="icon-good">✓</span> <span>High-density supportive memory foam that never sinks to the floor.</span></li>
-              <li><span class="icon-good">✓</span> <span>360° calming bolsters provide full neck, head, and nesting support.</span></li>
-              <li><span class="icon-good">✓</span> <span>100% machine-washable with zippered waterproof odor shield.</span></li>
-              <li><span class="icon-good">✓</span> <span>High-traction non-skid silicone bead gripper base.</span></li>
-              <li><span class="icon-good">✓</span> <span>30-Night "Happy Paws" 100% Money-Back Guarantee.</span></li>
+          <!-- Good -->
+          <div class="comp-card good">
+            <span class="comp-badge-pill good">✓ PawPawDoo Calming Cloud Bed</span>
+            <ul class="comp-list-items">
+              <li><span class="icon-check">✓</span> <span>High-density orthopedic memory foam that never sinks to the floor.</span></li>
+              <li><span class="icon-check">✓</span> <span>360° nesting bolsters cushion head, neck, and align the spine.</span></li>
+              <li><span class="icon-check">✓</span> <span>100% machine-washable with zippered waterproof odor shield.</span></li>
+              <li><span class="icon-check">✓</span> <span>Heavy-duty non-skid silicone bead gripper base.</span></li>
+              <li><span class="icon-check">✓</span> <span>30-Night "Happy Paws" 100% Money-Back Guarantee.</span></li>
             </ul>
           </div>
 
@@ -326,49 +336,56 @@
       </div>
     </section>
 
-    <!-- 6. 4-Layer Product Anatomy -->
+    <!-- 7. 4-Layer Product Anatomy -->
     <section class="anatomy-section" id="anatomy">
       <div class="container">
-        <div class="section-header">
-          <div class="section-tag">Designed for Fur-Baby Bliss</div>
-          <h2 class="section-title">Anatomy of the Ultimate Calming Cloud Bed</h2>
-          <p class="section-desc">Every layer is crafted with premium materials to reduce daily stress and cradle natural nesting positions.</p>
+        <div class="section-head-center">
+          <div class="section-eyebrow">Cozy Science</div>
+          <h2 class="section-headline">Anatomy of the Ultimate Calming Cloud Bed</h2>
+          <p class="section-desc">Every layer is precision-crafted with non-toxic, pet-safe materials for soothing comfort.</p>
         </div>
 
         <div class="anatomy-grid">
-          <div>
+          <div class="anatomy-image-wrap">
             <img 
-              style="border-radius: var(--radius-lg); box-shadow: var(--shadow-card); border: 1px solid var(--color-border);" 
               src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=80" 
-              alt="Calming Cloud Bed Memory Foam Anatomy"
+              alt="PawPawDoo Memory Foam Anatomy"
               onerror="this.onerror=null;this.src='assets/hero-cat-and-dog-banner.png';"
             >
           </div>
 
-          <div class="anatomy-layers-list">
+          <div class="layers-cards-column">
             
-            <div class="layer-card">
-              <div class="layer-number">Layer 01</div>
-              <h3 class="layer-title">Ultra-Plush Faux Fur Bolster Rim</h3>
-              <p class="layer-desc">Mimics the soothing warmth of mom's coat, triggering an instant feeling of security and easing anxiety for dogs and cats.</p>
+            <div class="layer-feature-card">
+              <span class="layer-step-num">01</span>
+              <div>
+                <h4>Ultra-Plush Faux Fur Bolster Rim</h4>
+                <p>Mimics the warmth of mom's coat, releasing oxytocin and soothing anxiety for dogs & cats.</p>
+              </div>
             </div>
 
-            <div class="layer-card">
-              <div class="layer-number">Layer 02</div>
-              <h3 class="layer-title">Waterproof Odor-Shield Inner Liner</h3>
-              <p class="layer-desc">Protects the core foam from moisture, slobber, and dander. Effortlessly removable via a hidden anti-chew zipper.</p>
+            <div class="layer-feature-card">
+              <span class="layer-step-num">02</span>
+              <div>
+                <h4>Waterproof Odor-Shield Inner Liner</h4>
+                <p>Protects the core foam from moisture, slobber, and accidents. Unzips in seconds.</p>
+              </div>
             </div>
 
-            <div class="layer-card">
-              <div class="layer-number">Layer 03</div>
-              <h3 class="layer-title">High-Density Supportive Memory Foam</h3>
-              <p class="layer-desc">Gently contours to your pet's body, absorbing joint pressure and promoting healthy posture during naps.</p>
+            <div class="layer-feature-card">
+              <span class="layer-step-num">03</span>
+              <div>
+                <h4>High-Density Supportive Memory Foam</h4>
+                <p>Contours smoothly to your pet's body, absorbing joint pressure and promoting deep REM sleep.</p>
+              </div>
             </div>
 
-            <div class="layer-card">
-              <div class="layer-number">Layer 04</div>
-              <h3 class="layer-title">Heavy-Duty Non-Skid Silicone Grip Base</h3>
-              <p class="layer-desc">Keeps the bed safely anchored in place during zoomies or excited bounding.</p>
+            <div class="layer-feature-card">
+              <span class="layer-step-num">04</span>
+              <div>
+                <h4>Heavy-Duty Non-Skid Silicone Grip Base</h4>
+                <p>Anchors the bed firmly on hardwood and tile, keeping pets safe during playful zoomies.</p>
+              </div>
             </div>
 
           </div>
@@ -376,159 +393,131 @@
       </div>
     </section>
 
-    <!-- 7. Verified Reviews (Calibrated to 2,500+ Happy Paws) -->
+    <!-- 8. Verified Reviews (2,500+ Happy Paws) -->
     <section class="reviews-section" id="reviews">
       <div class="container">
-        <div class="section-header">
-          <div class="section-tag">Loved by 2,500+ Paws</div>
-          <h2 class="section-title">Real Stories from Dog & Cat Parents</h2>
+        <div class="section-head-center">
+          <div class="section-eyebrow">Loved by 2,500+ Paws</div>
+          <h2 class="section-headline">Real Stories from Dog & Cat Parents</h2>
           <p class="section-desc">See why fur-families across the country trust PawPawDoo for their best friends.</p>
         </div>
 
-        <div class="reviews-summary-card">
-          <div class="stat-box">
-            <div class="stat-number" style="color: var(--color-terracotta);">4.9★</div>
-            <div class="stat-label">Overall Rating</div>
+        <div class="reviews-metrics-bar">
+          <div>
+            <div class="metric-number" style="color: var(--color-terracotta);">4.9★</div>
+            <div class="metric-label">Overall Rating</div>
           </div>
-          <div class="stat-box">
-            <div class="stat-number">2,500+</div>
-            <div class="stat-label">Happy Sleeping Paws</div>
+          <div>
+            <div class="metric-number">2,500+</div>
+            <div class="metric-label">Happy Sleeping Paws</div>
           </div>
-          <div class="stat-box">
-            <div class="stat-number">98.6%</div>
-            <div class="stat-label">Would Recommend to Friends</div>
+          <div>
+            <div class="metric-number">98.6%</div>
+            <div class="metric-label">Would Recommend to Friends</div>
           </div>
         </div>
 
-        <div class="reviews-cards-grid">
+        <div class="reviews-grid-3col">
           
-          <div class="review-card">
-            <div class="review-header">
-              <div class="stars">★★★★★</div>
-              <span class="verified-tag">✓ Verified Buyer</span>
+          <div class="review-testimonial-card">
+            <div class="review-card-head">
+              <span class="rating-stars">★★★★★</span>
+              <span class="verified-buyer-tag">✓ Verified Buyer</span>
             </div>
-            <div class="reviewer-name">Sarah & Duke</div>
-            <div class="pet-type-tag">🐕 Rescue Golden Mix (62 lbs)</div>
-            <p class="review-body">
+            <div class="pet-breed-pill">🐕 Rescue Golden Mix (62 lbs)</div>
+            <p class="review-quote-text">
               "My rescue Duke used to pace and pant for hours during thunderstorms. Within 5 minutes of laying in the PawPawDoo Cloud Bed, he sighed and fell into the deepest, calmest sleep. The 2-pack was the best purchase we made all year!"
             </p>
+            <div class="reviewer-profile">Sarah & Duke (Austin, TX)</div>
           </div>
 
-          <div class="review-card">
-            <div class="review-header">
-              <div class="stars">★★★★★</div>
-              <span class="verified-tag">✓ Verified Buyer</span>
+          <div class="review-testimonial-card">
+            <div class="review-card-head">
+              <span class="rating-stars">★★★★★</span>
+              <span class="verified-buyer-tag">✓ Verified Buyer</span>
             </div>
-            <div class="reviewer-name">Elena K. & Oliver</div>
-            <div class="pet-type-tag">🐱 12-Year-Old British Shorthair (14 lbs)</div>
-            <p class="review-body">
+            <div class="pet-breed-pill">🐱 12-Year-Old British Shorthair (14 lbs)</div>
+            <p class="review-quote-text">
               "Oliver is 12 and was struggling with stiff morning hops onto the sofa. He immediately claimed the Small Cloud Bed in Cream Velvet as his royal throne. The high bolster gives him the coziest chin-rest imaginable."
             </p>
+            <div class="reviewer-profile">Elena K. & Oliver (Seattle, WA)</div>
           </div>
 
-          <div class="review-card">
-            <div class="review-header">
-              <div class="stars">★★★★★</div>
-              <span class="verified-tag">✓ Verified Buyer</span>
+          <div class="review-testimonial-card">
+            <div class="review-card-head">
+              <span class="rating-stars">★★★★★</span>
+              <span class="verified-buyer-tag">✓ Verified Buyer</span>
             </div>
-            <div class="reviewer-name">Chloe & Dave R.</div>
-            <div class="pet-type-tag">🐾 2 Frenchies & Tabby Cat Household</div>
-            <p class="review-body">
+            <div class="pet-breed-pill">🐾 2 Frenchies & Tabby Cat Household</div>
+            <p class="review-quote-text">
               "Our Frenchies and our cat used to fight over our bed every night. We got the 3-pack so every room has a cloud haven. Unzipping to wash is super simple, and the fur comes right off in the wash!"
             </p>
+            <div class="reviewer-profile">Chloe & Dave R. (Denver, CO)</div>
           </div>
 
         </div>
       </div>
     </section>
 
-    <!-- 8. Sizing & Care FAQ Accordion -->
+    <!-- 9. Sizing & Care FAQ Accordion -->
     <section class="faq-section" id="faq">
       <div class="container">
-        <div class="section-header">
-          <div class="section-tag">Got Questions?</div>
-          <h2 class="section-title">Frequently Asked Questions & Sizing Guide</h2>
+        <div class="section-head-center">
+          <div class="section-eyebrow">Got Questions?</div>
+          <h2 class="section-headline">Frequently Asked Questions & Sizing</h2>
         </div>
 
-        <div class="faq-accordion">
+        <div class="faq-accordion-wrap">
           
-          <div class="faq-item active">
-            <button class="faq-question">
+          <div class="faq-accordion-item active">
+            <button class="faq-accordion-btn">
               <span>What size bed should I choose for my dog or cat?</span>
               <span class="icon">+</span>
             </button>
-            <div class="faq-answer">
-              <p>Here are our recommended sizes based on your pet's weight and sleeping style:</p>
-              <table class="sizing-table">
-                <thead>
-                  <tr>
-                    <th>Size</th>
-                    <th>Pet Weight</th>
-                    <th>Ideal For</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>Small (24")</strong></td>
-                    <td>Up to 25 lbs</td>
-                    <td>Cats of all sizes, Pugs, Frenchies, Shih Tzus, Corgi puppies</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Medium (32")</strong></td>
-                    <td>25 to 50 lbs</td>
-                    <td>Beagles, Spaniels, Australian Shepherds, Multi-Cat cuddles</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Large (40")</strong></td>
-                    <td>50 to 80 lbs</td>
-                    <td>Golden Retrievers, Labs, German Shepherds, Boxers</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Extra Large (48")</strong></td>
-                    <td>80+ lbs</td>
-                    <td>Great Danes, Mastiffs, Multi-Pet snuggle buddies</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div class="faq-accordion-content">
+              <p>• <strong>Small (24"):</strong> Best for cats of all sizes, Pugs, Frenchies, Shih Tzus, and puppies up to 25 lbs.</p>
+              <p style="margin-top: 6px;">• <strong>Medium (32"):</strong> Best for Beagles, Spaniels, Corgis, and multi-cat snuggles (25–50 lbs).</p>
+              <p style="margin-top: 6px;">• <strong>Large (40"):</strong> Best for Golden Retrievers, Labs, German Shepherds, Boxers (50–80 lbs).</p>
+              <p style="margin-top: 6px;">• <strong>Extra Large (48"):</strong> Best for Great Danes, Mastiffs, and giant breed cuddle pairs (80+ lbs).</p>
             </div>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
+          <div class="faq-accordion-item">
+            <button class="faq-accordion-btn">
               <span>Is it suitable for both cats and dogs?</span>
               <span class="icon">+</span>
             </button>
-            <div class="faq-answer">
+            <div class="faq-accordion-content">
               <p>Yes! Cats especially love the 360° high bolster rim for deep nesting and chin resting, while dogs enjoy the pressure-relieving memory foam base. It is designed for fur-babies of all kinds.</p>
             </div>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
+          <div class="faq-accordion-item">
+            <button class="faq-accordion-btn">
               <span>How do I wash and clean the Cloud Bed?</span>
               <span class="icon">+</span>
             </button>
-            <div class="faq-answer">
+            <div class="faq-accordion-content">
               <p>Cleaning is completely effortless! Simply unzip the outer faux-fur cover and machine wash on a gentle cold cycle. Tumble dry on low heat or air dry. The waterproof inner liner keeps the core foam safe from moisture.</p>
             </div>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
+          <div class="faq-accordion-item">
+            <button class="faq-accordion-btn">
               <span>How fast is shipping?</span>
               <span class="icon">+</span>
             </button>
-            <div class="faq-answer">
+            <div class="faq-accordion-content">
               <p>All orders are dispatched directly from our <strong>US Warehouse</strong> via USPS Priority Tracked. Delivery takes just <strong>3–5 business days</strong> to your door with real-time tracking.</p>
             </div>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question">
+          <div class="faq-accordion-item">
+            <button class="faq-accordion-btn">
               <span>What is the 30-Night 'Happy Paws' Guarantee?</span>
               <span class="icon">+</span>
             </button>
-            <div class="faq-answer">
+            <div class="faq-accordion-content">
               <p>We want your fur-family to love their new cloud sleep. If for any reason your dog or cat does not adore the bed within 30 nights, simply email us at <strong>support@pawpawdoo.store</strong> for a 100% refund — no hassle.</p>
             </div>
           </div>
@@ -537,16 +526,16 @@
       </div>
     </section>
 
-    <!-- 9. Risk Reversal Guarantee Section -->
-    <section class="guarantee-section">
+    <!-- 10. Risk Reversal Guarantee Banner -->
+    <section class="guarantee-cta-banner">
       <div class="container">
-        <div class="guarantee-box">
-          <div class="guarantee-shield">🛡️</div>
-          <h2 class="guarantee-title">30-Night 'Happy Paws' Guarantee</h2>
-          <p class="guarantee-desc">
-            Try the PawPawDoo Cloud Bed in your home for 30 nights risk-free. If your pup or kitty isn't sleeping deeper, feeling calmer, and purring or wagging their tail happily, return it for a full refund. Because at PawPawDoo, it's always <strong>Pawmily first.</strong>
+        <div class="guarantee-banner-box">
+          <div class="guarantee-shield-icon">🛡️</div>
+          <h2 class="guarantee-banner-title">30-Night 'Happy Paws' Guarantee</h2>
+          <p class="guarantee-banner-desc">
+            Try the PawPawDoo Cloud Bed in your home for 30 nights risk-free. If your pup or kitty isn't sleeping deeper, feeling calmer, and wagging or purring happily, return it for a full refund. Because at PawPawDoo, it's always <strong>Pawmily first.</strong>
           </p>
-          <button class="btn-primary-cta trigger-checkout" style="max-width: 400px;">
+          <button class="btn-flagship-cta trigger-checkout" style="max-width: 380px;">
             <span>Claim Your Risk-Free Bed Now</span>
             <span>➔</span>
           </button>
@@ -555,13 +544,13 @@
     </section>
   </main>
 
-  <!-- 10. Footer (Rule #12: Tagline Underneath Title) -->
+  <!-- 11. Footer -->
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-grid">
+      <div class="footer-grid-layout">
         
-        <div class="footer-brand">
-          <a href="#" class="brand-lockup">
+        <div class="footer-col">
+          <a href="#" class="brand-lockup" style="margin-bottom: 14px;">
             <img 
               src="https://cdn.shopify.com/s/files/1/0773/4620/9837/files/pawpawdoo-lockup-final.svg?v=1787297952" 
               alt="PawPawDoo" 
@@ -569,9 +558,9 @@
               style="filter: brightness(0) invert(1);"
               onerror="this.onerror=null;this.src='https://cdn.shopify.com/s/files/1/0773/4620/9837/files/pawpawdoo-icon-final.svg?v=1787297952';"
             >
-            <span class="brand-tagline-underneath" style="color: #E29D38;">Pawmily first.</span>
+            <span class="brand-tagline-underneath" style="color: #E5A338;">Pawmily first.</span>
           </a>
-          <p>
+          <p style="font-size: 14px; color: #A6978C; line-height: 1.6;">
             Dedicated to giving dogs & cats the coziest, healthiest sleep on earth. Premium pet comfort designed with unconditional love.
           </p>
           <p style="margin-top: 10px; font-weight: 700; color: var(--color-terracotta);">Pawmily first. Always.</p>
@@ -599,37 +588,37 @@
 
         <div class="footer-col">
           <h4>Join the Pawmily VIP Club</h4>
-          <p style="font-size: 13.5px; color: #C2B3A7;">Get 10% off your first order plus free pet wellness & comfort tips.</p>
-          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Welcome to the Pawmily! Check your email for your 10% code.');">
-            <input type="email" class="newsletter-input" placeholder="Enter your email" required>
-            <button type="submit" class="newsletter-btn">Join</button>
+          <p style="font-size: 13px; color: #A6978C; margin-bottom: 8px;">Get 10% off your first order plus free pet wellness & comfort tips.</p>
+          <form class="newsletter-input-group" onsubmit="event.preventDefault(); alert('Welcome to the Pawmily! Check your email for your 10% code.');">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Join</button>
           </form>
         </div>
 
       </div>
 
-      <div class="footer-bottom">
+      <div class="footer-legal-bottom">
         <div>© 2026 PawPawDoo. All rights reserved. Built with love for pets everywhere.</div>
         <div>Privacy Policy • Terms of Service • Accessibility</div>
       </div>
     </div>
   </footer>
 
-  <!-- 11. Mobile-First Sticky CTA Bar (Rule #4) -->
-  <aside class="mobile-sticky-cta" id="mobileStickyCta">
-    <div class="sticky-info">
-      <span class="sticky-product-name">PawPawDoo Cloud Bed</span>
-      <div class="sticky-pricing">
-        <span class="sticky-price" id="stickyPrice">$134.22</span>
-        <span class="sticky-badge" id="stickyBadge">Save 15%</span>
+  <!-- 12. Mobile Sticky CTA Bar (390px Viewport Optimization) -->
+  <aside class="mobile-sticky-bar" id="mobileStickyBar">
+    <div class="sticky-product-meta">
+      <span class="sticky-name">PawPawDoo Cloud Bed</span>
+      <div class="sticky-price-row">
+        <span class="sticky-price" id="stickyPriceText">$134.22</span>
+        <span class="sticky-save-badge" id="stickyBadgeText">Save 15%</span>
       </div>
     </div>
-    <button class="btn-sticky-action trigger-checkout">
+    <button class="sticky-action-button trigger-checkout">
       Claim Offer ➔
     </button>
   </aside>
 
-  <!-- Main JavaScript Logic -->
+  <!-- Interactive Logic -->
   <script src="app.js"></script>
 </body>
 </html>

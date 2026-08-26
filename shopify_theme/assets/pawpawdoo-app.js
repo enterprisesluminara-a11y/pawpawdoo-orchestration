@@ -1,275 +1,274 @@
 /**
- * PawPawDoo DTC Storefront Interactive Logic & CRO Engine
- * Brand: PawPawDoo | Tagline: "Pawmily first."
- * Dual Pet Positioning: Cats & Dogs
+ * PawPawDoo Flagship DTC E-Commerce JavaScript Engine
+ * Brand: PawPawDoo | Slogan: "Pawmily first."
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initVariantSelectors();
-  initBundleSelector();
-  initCountdownTimer();
   initGallery();
+  initVariantCustomizer();
+  initBundleTiers();
+  initCountdownTimer();
   initFaqAccordion();
   initStickyCtaBar();
-  initSocialProofPopups();
+  initLiveSalesToasts();
 });
 
-// 0. Variant Selectors (Size & Color - Rule #13)
-let currentSelectedSize = 'M';
-let currentSelectedColor = 'Cream Velvet';
-
-function initVariantSelectors() {
-  const sizeBtns = document.querySelectorAll('.size-btn');
-  const sizeDisplay = document.getElementById('selectedSizeDisplay');
-  
-  sizeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      sizeBtns.forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      currentSelectedSize = btn.dataset.size;
-      if (sizeDisplay && btn.dataset.label) {
-        sizeDisplay.textContent = btn.dataset.label;
-      }
-    });
-  });
-
-  const colorBtns = document.querySelectorAll('.color-swatch-btn');
-  const colorDisplay = document.getElementById('selectedColorDisplay');
-  const mainImage = document.getElementById('mainHeroImage');
-  
-  // High quality lifestyle color maps
-  const colorImageMap = {
-    'Cream Velvet': 'https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=1000&q=80',
-    'Terracotta Cloud': 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=1000&q=80',
-    'Slate Grey': 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=80'
-  };
-
-  colorBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      colorBtns.forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      currentSelectedColor = btn.dataset.color;
-      if (colorDisplay) {
-        colorDisplay.textContent = currentSelectedColor;
-      }
-      if (mainImage && colorImageMap[currentSelectedColor]) {
-        mainImage.src = colorImageMap[currentSelectedColor];
-      }
-    });
-  });
-}
-
-// 1. Bundle Selector & Checkout Engine
-const BUNDLE_DATA = {
-  1: {
-    quantity: 1,
-    title: '1x Calming Cloud Pet Bed',
-    price: 78.95,
-    compareAt: 102.64,
-    savings: '$23.69 (Save 23%)',
-    badge: 'Standard Pack',
-    bonus: 'Standard Tracked Dispatch',
-    sku: 'DS-PPD-BED-001',
-    variantId: '15345170022445'
-  },
-  2: {
-    quantity: 2,
-    title: '2x Multi-Room / Multi-Pet Pack (Living Room + Bedroom)',
-    price: 134.22,
-    compareAt: 205.28,
-    savings: '$71.06 (Save 15% Additional)',
-    badge: 'BEST VALUE — 68% OF PET PARENTS CHOOSE THIS',
-    bonus: 'Free Odor-Eliminating Paw Care Guide ($19.99 Value)',
-    sku: 'DS-PPD-BED-002',
-    variantId: '15345170022445'
-  },
-  3: {
-    quantity: 3,
-    title: '3x Ultimate Fur-Family Pack (Multi-Pet Household)',
-    price: 185.53,
-    compareAt: 307.92,
-    savings: '$122.39 (Save 22% Additional)',
-    badge: 'MAXIMUM SAVINGS',
-    bonus: 'Free Spare Waterproof Cover + Grooming Glove ($39.99 Value)',
-    sku: 'DS-PPD-BED-003',
-    variantId: '15345170022445'
-  }
-};
-
-let currentSelectedTier = 2; // Default to Tier 2 (Most Popular)
-
-function initBundleSelector() {
-  const cards = document.querySelectorAll('.bundle-card');
-  const mainCtaText = document.getElementById('mainCtaText');
-  const stickyPrice = document.getElementById('stickyPrice');
-  const stickyBadge = document.getElementById('stickyBadge');
-
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      cards.forEach(c => c.classList.remove('selected'));
-      card.classList.add('selected');
-      
-      const tier = parseInt(card.dataset.tier, 10);
-      currentSelectedTier = tier;
-      const data = BUNDLE_DATA[tier];
-
-      if (mainCtaText) {
-        mainCtaText.textContent = `Claim Your Pack — $${data.price.toFixed(2)} (Save ${tier === 1 ? '23%' : tier === 2 ? '35%' : '40%'})`;
-      }
-      if (stickyPrice) {
-        stickyPrice.textContent = `$${data.price.toFixed(2)}`;
-      }
-      if (stickyBadge) {
-        stickyBadge.textContent = tier === 2 ? 'Save 15%' : tier === 3 ? 'Save 22%' : 'Free Ship';
-      }
-    });
-  });
-
-  // Main Checkout Trigger Buttons
-  const checkoutButtons = document.querySelectorAll('.trigger-checkout');
-  checkoutButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      handleCheckout(currentSelectedTier);
-    });
-  });
-}
-
-function handleCheckout(tier) {
-  const data = BUNDLE_DATA[tier];
-  console.log(`[PawPawDoo Checkout] Initiating checkout for Tier ${tier} (${currentSelectedSize} / ${currentSelectedColor}):`, data);
-  
-  // Construct direct Shopify checkout URL with selected attributes
-  const shopifyDomain = 'pawpawdoo.store';
-  const checkoutUrl = `https://${shopifyDomain}/cart/${data.variantId}:${data.quantity}?attributes[size]=${encodeURIComponent(currentSelectedSize)}&attributes[color]=${encodeURIComponent(currentSelectedColor)}&ref=pawpawdoo-direct`;
-  
-  // Open checkout in new tab
-  window.open(checkoutUrl, '_blank');
-}
-
-// 2. Real-Time Urgency Countdown Timer
-function initCountdownTimer() {
-  const timerElement = document.getElementById('flashSaleTimer');
-  if (!timerElement) return;
-
-  let totalSeconds = 4 * 3600 + 38 * 60 + 15; // 4 hours 38 mins
-
-  setInterval(() => {
-    if (totalSeconds <= 0) {
-      totalSeconds = 24 * 3600; // Reset
-    }
-    totalSeconds--;
-
-    const hours = Math.floor(totalSeconds / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-
-    timerElement.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
-  }, 1000);
-}
-
-function pad(num) {
-  return num < 10 ? '0' + num : num;
-}
-
-// 3. Multi-View Gallery Switcher
+// 1. Interactive Gallery
 function initGallery() {
-  const thumbs = document.querySelectorAll('.thumb-item');
-  const mainImage = document.getElementById('mainHeroImage');
+  const thumbs = document.querySelectorAll('.thumb-card');
+  const mainPhoto = document.getElementById('mainHeroPhoto');
 
   thumbs.forEach(thumb => {
     thumb.addEventListener('click', () => {
       thumbs.forEach(t => t.classList.remove('active'));
       thumb.classList.add('active');
 
-      const newSrc = thumb.dataset.fullSrc;
-      if (mainImage && newSrc) {
-        mainImage.src = newSrc;
+      const targetSrc = thumb.dataset.src;
+      if (mainPhoto && targetSrc) {
+        mainPhoto.style.opacity = '0.3';
+        setTimeout(() => {
+          mainPhoto.src = targetSrc;
+          mainPhoto.style.opacity = '1';
+        }, 150);
       }
     });
   });
 }
 
-// 4. FAQ Accordion
-function initFaqAccordion() {
-  const faqItems = document.querySelectorAll('.faq-item');
+// 2. Variant Customizer (Size & Color)
+let currentSize = 'M';
+let currentColor = 'Cream Velvet';
 
-  faqItems.forEach(item => {
-    const question = item.querySelector('.faq-question');
-    question.addEventListener('click', () => {
-      const isActive = item.classList.contains('active');
-      faqItems.forEach(i => i.classList.remove('active'));
-      if (!isActive) {
+function initVariantCustomizer() {
+  const sizeChips = document.querySelectorAll('.size-chip');
+  const sizeDisplay = document.getElementById('sizeValueDisplay');
+
+  sizeChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      sizeChips.forEach(c => c.classList.remove('selected'));
+      chip.classList.add('selected');
+      currentSize = chip.dataset.size;
+      if (sizeDisplay && chip.dataset.label) {
+        sizeDisplay.textContent = chip.dataset.label;
+      }
+    });
+  });
+
+  const colorCards = document.querySelectorAll('.color-swatch-card');
+  const colorDisplay = document.getElementById('colorValueDisplay');
+  const mainPhoto = document.getElementById('mainHeroPhoto');
+
+  const colorToImageMap = {
+    'Cream Velvet': 'https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=1000&q=80',
+    'Terracotta Cloud': 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=1000&q=80',
+    'Slate Grey': 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=80'
+  };
+
+  colorCards.forEach(card => {
+    card.addEventListener('click', () => {
+      colorCards.forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      currentColor = card.dataset.color;
+      if (colorDisplay) {
+        colorDisplay.textContent = currentColor;
+      }
+      if (mainPhoto && colorToImageMap[currentColor]) {
+        mainPhoto.style.opacity = '0.3';
+        setTimeout(() => {
+          mainPhoto.src = colorToImageMap[currentColor];
+          mainPhoto.style.opacity = '1';
+        }, 150);
+      }
+    });
+  });
+}
+
+// 3. Bundle Tiers & Checkout Engine
+const BUNDLES = {
+  1: {
+    tier: 1,
+    quantity: 1,
+    title: '1x Calming Cloud Pet Bed',
+    price: 78.95,
+    compareAt: 102.64,
+    saveText: '23%',
+    variantId: '15345953112109'
+  },
+  2: {
+    tier: 2,
+    quantity: 2,
+    title: '2x Multi-Room / Multi-Pet Pack',
+    price: 134.22,
+    compareAt: 205.28,
+    saveText: '35%',
+    badge: 'Save 15%',
+    variantId: '15345953112109'
+  },
+  3: {
+    tier: 3,
+    quantity: 3,
+    title: '3x Ultimate Fur-Family Pack',
+    price: 185.53,
+    compareAt: 307.92,
+    saveText: '40%',
+    badge: 'Save 22%',
+    variantId: '15345953112109'
+  }
+};
+
+let currentTier = 2; // Default to Tier 2 (Most Popular)
+
+function initBundleTiers() {
+  const cards = document.querySelectorAll('.bundle-tier-card');
+  const mainCtaText = document.getElementById('mainCtaButtonText');
+  const stickyPriceText = document.getElementById('stickyPriceText');
+  const stickyBadgeText = document.getElementById('stickyBadgeText');
+  const headerCartCount = document.getElementById('headerCartCount');
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      cards.forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+
+      currentTier = parseInt(card.dataset.tier, 10);
+      const b = BUNDLES[currentTier];
+
+      if (mainCtaText) {
+        mainCtaText.textContent = `Claim Your Pack — $${b.price.toFixed(2)} (Save ${b.saveText})`;
+      }
+      if (stickyPriceText) {
+        stickyPriceText.textContent = `$${b.price.toFixed(2)}`;
+      }
+      if (stickyBadgeText) {
+        stickyBadgeText.textContent = b.badge || 'Free Ship';
+      }
+      if (headerCartCount) {
+        headerCartCount.textContent = b.quantity;
+      }
+    });
+  });
+
+  const triggers = document.querySelectorAll('.trigger-checkout');
+  triggers.forEach(btn => {
+    btn.addEventListener('click', () => {
+      triggerShopifyCheckout(currentTier);
+    });
+  });
+}
+
+function triggerShopifyCheckout(tier) {
+  const b = BUNDLES[tier];
+  console.log(`[PawPawDoo Checkout] Initiating Checkout for Tier ${tier}:`, b);
+
+  const domain = 'pawpawdoo.store';
+  const checkoutUrl = `https://${domain}/cart/${b.variantId}:${b.quantity}?attributes[Size]=${encodeURIComponent(currentSize)}&attributes[Color]=${encodeURIComponent(currentColor)}&ref=pawpawdoo-direct`;
+  window.open(checkoutUrl, '_blank');
+}
+
+// 4. Urgency Countdown Timer
+function initCountdownTimer() {
+  const timer = document.getElementById('flashTimer');
+  if (!timer) return;
+
+  let totalSeconds = 4 * 3600 + 38 * 60 + 15;
+
+  setInterval(() => {
+    if (totalSeconds <= 0) totalSeconds = 24 * 3600;
+    totalSeconds--;
+
+    const h = Math.floor(totalSeconds / 3600);
+    const m = Math.floor((totalSeconds % 3600) / 60);
+    const s = totalSeconds % 60;
+
+    timer.textContent = `${pad(h)}:${pad(m)}:${pad(s)}`;
+  }, 1000);
+}
+
+function pad(n) {
+  return n < 10 ? '0' + n : n;
+}
+
+// 5. FAQ Accordion
+function initFaqAccordion() {
+  const items = document.querySelectorAll('.faq-accordion-item');
+
+  items.forEach(item => {
+    const btn = item.querySelector('.faq-accordion-btn');
+    btn.addEventListener('click', () => {
+      const isAlreadyActive = item.classList.contains('active');
+      items.forEach(i => i.classList.remove('active'));
+      if (!isAlreadyActive) {
         item.classList.add('active');
       }
     });
   });
 }
 
-// 5. Mobile Sticky CTA Bar (Rule #4)
+// 6. Mobile Sticky CTA Bar
 function initStickyCtaBar() {
-  const stickyBar = document.getElementById('mobileStickyCta');
-  if (!stickyBar) return;
+  const bar = document.getElementById('mobileStickyBar');
+  if (!bar) return;
 
   window.addEventListener('scroll', () => {
-    const scrollPos = window.scrollY || window.pageYOffset;
-    if (scrollPos > 320) {
-      stickyBar.classList.add('visible');
+    const scroll = window.scrollY || window.pageYOffset;
+    if (scroll > 250) {
+      bar.classList.add('visible');
     } else {
-      stickyBar.classList.remove('visible');
+      bar.classList.remove('visible');
     }
   });
 }
 
-// 6. Live Social Proof Popups (Cats & Dogs Calibrated)
-function initSocialProofPopups() {
+// 7. Live Sales Toast Notifications
+function initLiveSalesToasts() {
   const cities = ['Austin, TX', 'Seattle, WA', 'Denver, CO', 'Chicago, IL', 'San Diego, CA', 'Miami, FL', 'Nashville, TN'];
-  const names = ['Sarah & Duke 🐕', 'Elena & Oliver 🐱', 'Chloe & Dave 🐾', 'Marcus & Luna 🐶', 'Jessica & Cleo 🐱'];
-  const packs = ['2-Pack Multi-Room Bundle (Cream Velvet)', '1x Calming Cloud Bed (Terracotta Cloud)', '3-Pack Fur-Family Bundle (Slate Grey)'];
+  const parents = ['Sarah & Duke 🐕', 'Elena & Oliver 🐱', 'Chloe & Dave 🐾', 'Marcus & Luna 🐶', 'Jessica & Cleo 🐱'];
+  const bundles = ['2-Pack Multi-Room (Cream Velvet)', '1x Calming Bed (Terracotta Cloud)', '3-Pack Fur-Family (Slate Grey)'];
 
-  const popup = document.createElement('div');
-  popup.className = 'live-sales-popup';
-  popup.style.cssText = `
+  const toast = document.createElement('div');
+  toast.className = 'live-sale-toast';
+  toast.style.cssText = `
     position: fixed;
-    bottom: 90px;
+    bottom: 84px;
     left: 20px;
     background: #FFFFFF;
-    border: 1px solid #E8DED4;
-    box-shadow: 0 8px 24px rgba(55,40,29,0.12);
-    border-radius: 12px;
-    padding: 12px 16px;
+    border: 1px solid #E8DFD5;
+    box-shadow: 0 10px 28px rgba(42,31,24,0.12);
+    border-radius: 14px;
+    padding: 12px 18px;
     display: flex;
     align-items: center;
     gap: 12px;
-    z-index: 999;
-    transform: translateY(150px);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 998;
+    transform: translateY(160px);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     max-width: 320px;
     font-size: 13px;
   `;
-  document.body.appendChild(popup);
+  document.body.appendChild(toast);
 
-  function showNotification() {
-    const randomCity = cities[Math.floor(Math.random() * cities.length)];
-    const randomName = names[Math.floor(Math.random() * names.length)];
-    const randomPack = packs[Math.floor(Math.random() * packs.length)];
-    const randomMins = Math.floor(Math.random() * 8) + 1;
+  function triggerToast() {
+    const rCity = cities[Math.floor(Math.random() * cities.length)];
+    const rParent = parents[Math.floor(Math.random() * parents.length)];
+    const rBundle = bundles[Math.floor(Math.random() * bundles.length)];
+    const rMins = Math.floor(Math.random() * 8) + 1;
 
-    popup.innerHTML = `
-      <div style="width: 38px; height: 38px; background: #F8ECE4; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px;">🐾</div>
+    toast.innerHTML = `
+      <div style="width: 38px; height: 38px; background: #FBF0EB; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px;">🐾</div>
       <div>
-        <div style="font-weight: 700; color: #37281D;">${randomName} from ${randomCity}</div>
-        <div style="color: #67564A; font-size: 12px;">Purchased <strong>${randomPack}</strong> (${randomMins}m ago)</div>
+        <div style="font-weight: 700; color: #2A1F18;">${rParent} in ${rCity}</div>
+        <div style="color: #5E524A; font-size: 12px;">Purchased <strong>${rBundle}</strong> (${rMins}m ago)</div>
       </div>
     `;
 
-    popup.style.transform = 'translateY(0)';
+    toast.style.transform = 'translateY(0)';
     setTimeout(() => {
-      popup.style.transform = 'translateY(150px)';
+      toast.style.transform = 'translateY(160px)';
     }, 5000);
   }
 
   setTimeout(() => {
-    showNotification();
-    setInterval(showNotification, 24000);
-  }, 5000);
+    triggerToast();
+    setInterval(triggerToast, 22000);
+  }, 4000);
 }
