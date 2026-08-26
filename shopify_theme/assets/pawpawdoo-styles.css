@@ -1,27 +1,36 @@
 /* ==========================================================================
-   PawPawDoo DTC Storefront & Landing Page Stylesheet
-   Brand Identity: Terracotta (#C86432) | Espresso (#37281D) | Cream (#FAF8F5)
-   Tagline: "Pawmily first."
+   PawPawDoo DTC Storefront — High-End Pet Lifestyle Design System
+   Brand Identity: Primary Terracotta (#C86432) | Espresso (#37281D) | Cream (#FAF8F5)
+   Official Slogan: "Pawmily first."
+   Positioning: Calming Cloud Comfort for BOTH Cats and Dogs
    ========================================================================== */
 
 :root {
   /* Brand Palette (Rule #1) */
   --color-terracotta: #C86432;
-  --color-terracotta-hover: #B05324;
-  --color-terracotta-light: #F7EAE3;
+  --color-terracotta-hover: #AF5324;
+  --color-terracotta-light: #F8ECE4;
+  --color-terracotta-glow: rgba(200, 100, 50, 0.16);
+  
   --color-espresso: #37281D;
-  --color-espresso-muted: #5E4A3E;
+  --color-espresso-muted: #67564A;
+  --color-espresso-subtle: #96867B;
+  
   --color-cream: #FAF8F5;
   --color-cream-card: #FFFFFF;
-  --color-border: #EADBCE;
-  --color-border-light: #F0E6DD;
+  --color-cream-warm: #F4EFEA;
+  --color-border: #E8DED4;
+  --color-border-light: #F0E8DF;
   
-  /* Accent & Functional Colors */
+  /* Variant Swatches */
+  --swatch-terracotta-cloud: #C86432;
+  --swatch-cream-velvet: #FAF5EE;
+  --swatch-slate-grey: #6B6560;
+
+  /* Accents & Trust Seals */
   --color-gold: #E29D38;
-  --color-sage: #4A7C59;
-  --color-sage-light: #EBF2ED;
-  --color-error: #D9383A;
-  --color-error-light: #FDF0F0;
+  --color-sage: #3E7350;
+  --color-sage-light: #EBF3EE;
   --color-white: #FFFFFF;
   
   /* Typography */
@@ -29,24 +38,25 @@
   --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
   /* Spacing & Radii */
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 22px;
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
   --radius-full: 9999px;
   
-  /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(55, 40, 29, 0.05);
-  --shadow-md: 0 6px 20px rgba(55, 40, 29, 0.08);
-  --shadow-lg: 0 12px 36px rgba(55, 40, 29, 0.12);
-  --shadow-glass: 0 8px 32px 0 rgba(198, 97, 46, 0.08);
+  /* Elevation & Shadows */
+  --shadow-subtle: 0 2px 10px rgba(55, 40, 29, 0.04);
+  --shadow-card: 0 8px 24px rgba(55, 40, 29, 0.07);
+  --shadow-card-hover: 0 14px 36px rgba(55, 40, 29, 0.12);
+  --shadow-terracotta: 0 8px 24px rgba(200, 100, 50, 0.32);
   
   /* Transitions */
-  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ==========================================================================
-   Reset & Base Styles
+   Reset & Document Base
    ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -67,14 +77,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  padding-bottom: 80px; /* Space for sticky mobile CTA */
+  padding-bottom: 84px; /* Space for mobile sticky CTA */
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   color: var(--color-espresso);
   font-weight: 700;
-  line-height: 1.25;
+  line-height: 1.22;
 }
 
 a {
@@ -102,13 +112,13 @@ button {
 }
 
 /* ==========================================================================
-   Announcement Bar & Ticker
+   1. Announcement Bar
    ========================================================================== */
 .announcement-bar {
-  background: linear-gradient(90deg, #37281D 0%, #4A3527 100%);
+  background: linear-gradient(90deg, #2D1F15 0%, #3D2B1E 50%, #2D1F15 100%);
   color: #FAF8F5;
   padding: 10px 16px;
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 600;
   text-align: center;
   position: relative;
@@ -149,70 +159,73 @@ button {
 }
 
 /* ==========================================================================
-   Header & Glassmorphism Navigation
+   2. Header & Vertical Brand Lockup (Rule #12: Tagline Underneath Title)
    ========================================================================== */
 .site-header {
   position: sticky;
   top: 0;
-  background: rgba(250, 248, 245, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(250, 248, 245, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--color-border-light);
   z-index: 90;
-  transition: var(--transition-normal);
+  transition: var(--transition-smooth);
 }
 
 .nav-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  height: 76px;
 }
 
-.brand-logo-group {
+/* High-End Vertical Brand Lockup (Rule #12) */
+.brand-lockup {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  text-decoration: none;
 }
 
-.logo-symbol {
-  width: 38px;
-  height: 38px;
+.brand-icon-box {
+  width: 42px;
+  height: 42px;
   background: var(--color-terracotta);
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-size: 20px;
-  box-shadow: 0 4px 12px rgba(200, 100, 50, 0.25);
+  font-size: 22px;
+  box-shadow: 0 4px 12px rgba(200, 100, 50, 0.28);
   flex-shrink: 0;
 }
 
-.brand-text-block {
+.brand-text-stack {
   display: flex;
   flex-direction: column;
-  line-height: 1.15;
+  line-height: 1.05;
 }
 
-.brand-title {
-  font-size: 21px;
+.brand-name {
+  font-size: 22px;
   font-weight: 800;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.6px;
   color: var(--color-espresso);
 }
 
-.brand-tagline-sub {
+.brand-tagline-underneath {
   font-size: 11.5px;
   font-weight: 700;
   color: var(--color-terracotta);
-  letter-spacing: 0.3px;
-  margin-top: 1px;
+  letter-spacing: 0.4px;
+  margin-top: 3px;
+  font-style: italic;
 }
 
 .nav-links {
   display: flex;
-  gap: 28px;
+  gap: 32px;
   list-style: none;
 }
 
@@ -233,120 +246,11 @@ button {
   gap: 16px;
 }
 
-/* Variant & Swatch Selectors (Rule #13) */
-.variant-selection-group {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  background: var(--color-cream-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: 16px;
-  box-shadow: var(--shadow-sm);
-}
-
-.variant-label-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-size: 13.5px;
-  font-weight: 700;
-  color: var(--color-espresso);
-}
-
-.variant-value-highlight {
-  color: var(--color-terracotta);
-  font-weight: 800;
-}
-
-.size-selector-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-}
-
-.size-option-btn {
-  background: var(--color-cream);
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: 10px 4px;
-  text-align: center;
-  cursor: pointer;
-  transition: var(--transition-fast);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-
-.size-option-btn:hover {
-  border-color: #D6A487;
-  background: #FFFDFC;
-}
-
-.size-option-btn.selected {
-  border-color: var(--color-terracotta);
-  background: var(--color-terracotta-light);
-  box-shadow: 0 2px 8px rgba(200, 100, 50, 0.15);
-}
-
-.size-name {
-  font-weight: 800;
-  font-size: 13.5px;
-  color: var(--color-espresso);
-}
-
-.size-sub {
-  font-size: 10.5px;
-  color: var(--color-espresso-muted);
-  font-weight: 600;
-}
-
-.color-swatches-grid {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.color-swatch-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
-  background: var(--color-cream);
-  border: 1.5px solid var(--color-border);
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--color-espresso);
-  transition: var(--transition-fast);
-}
-
-.color-swatch-btn:hover {
-  border-color: #D6A487;
-}
-
-.color-swatch-btn.selected {
-  border-color: var(--color-terracotta);
-  background: #FFFDFB;
-  box-shadow: 0 2px 8px rgba(200, 100, 50, 0.15);
-}
-
-.swatch-circle {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  border: 1px solid rgba(0,0,0,0.15);
-  display: inline-block;
-}
-
 .cart-button {
-  position: relative;
   background: var(--color-cream-card);
-  border: 1px solid var(--color-border);
-  padding: 10px 14px;
-  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-border);
+  padding: 10px 16px;
+  border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -354,11 +258,12 @@ button {
   font-size: 14px;
   color: var(--color-espresso);
   transition: var(--transition-fast);
+  box-shadow: var(--shadow-subtle);
 }
 
 .cart-button:hover {
   border-color: var(--color-terracotta);
-  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
 }
 
 .cart-count {
@@ -375,23 +280,23 @@ button {
 }
 
 /* ==========================================================================
-   Hero Section
+   3. Hero Section
    ========================================================================== */
 .hero-section {
-  padding: 48px 0 64px;
+  padding: 40px 0 64px;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: 56px;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 52px;
   align-items: start;
 }
 
-/* Media Gallery */
+/* Media Showcase */
 .gallery-wrapper {
   position: sticky;
-  top: 96px;
+  top: 98px;
 }
 
 .main-image-container {
@@ -400,7 +305,7 @@ button {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-card);
   aspect-ratio: 1 / 1;
 }
 
@@ -411,10 +316,6 @@ button {
   transition: transform 0.4s ease;
 }
 
-.main-image-container:hover .main-hero-img {
-  transform: scale(1.03);
-}
-
 .badge-overlay-top-left {
   position: absolute;
   top: 16px;
@@ -423,12 +324,9 @@ button {
   color: #fff;
   font-size: 12px;
   font-weight: 800;
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: var(--radius-full);
   box-shadow: 0 4px 12px rgba(200, 100, 50, 0.35);
-  display: flex;
-  align-items: center;
-  gap: 6px;
 }
 
 .badge-overlay-top-right {
@@ -439,11 +337,8 @@ button {
   color: #fff;
   font-size: 12px;
   font-weight: 700;
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: var(--radius-full);
-  display: flex;
-  align-items: center;
-  gap: 6px;
 }
 
 .thumbnails-row {
@@ -461,11 +356,12 @@ button {
   background: var(--color-cream-card);
   aspect-ratio: 1 / 1;
   transition: var(--transition-fast);
+  box-shadow: var(--shadow-subtle);
 }
 
 .thumb-item.active {
   border-color: var(--color-terracotta);
-  box-shadow: 0 0 0 2px rgba(200, 100, 50, 0.2);
+  box-shadow: 0 0 0 2px rgba(200, 100, 50, 0.25);
 }
 
 .thumb-item img {
@@ -481,16 +377,21 @@ button {
   gap: 20px;
 }
 
-.rating-social-row {
-  display: flex;
+.social-rating-pill {
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-size: 14px;
+  background: #FFFDFC;
+  border: 1px solid var(--color-border-light);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  width: fit-content;
 }
 
 .stars {
   color: var(--color-gold);
-  font-size: 16px;
+  font-size: 15px;
   letter-spacing: 2px;
 }
 
@@ -501,14 +402,13 @@ button {
 
 .reviews-count {
   color: var(--color-espresso-muted);
-  text-decoration: underline;
-  cursor: pointer;
+  font-weight: 500;
 }
 
 .hero-headline {
-  font-size: 38px;
+  font-size: 36px;
   line-height: 1.18;
-  letter-spacing: -1px;
+  letter-spacing: -0.8px;
 }
 
 .hero-subheadline {
@@ -519,31 +419,30 @@ button {
 
 .logistics-banner-card {
   background: var(--color-sage-light);
-  border: 1px solid rgba(74, 124, 89, 0.3);
+  border: 1px solid rgba(62, 115, 80, 0.25);
   padding: 14px 18px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .logistics-banner-card .icon {
-  font-size: 24px;
+  font-size: 22px;
 }
 
 .logistics-banner-card .text {
   font-size: 13.5px;
   font-weight: 600;
-  color: #2D5239;
+  color: var(--color-sage);
 }
 
-/* Value Props Micro List */
+/* Value Props List */
 .value-props-list {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 8px 0;
 }
 
 .value-props-list li {
@@ -558,58 +457,168 @@ button {
   color: var(--color-terracotta);
   font-weight: bold;
   font-size: 16px;
-  flex-shrink: 0;
   margin-top: 1px;
 }
 
 /* ==========================================================================
-   3-Tier DTC Offer Selector (Rule #4)
+   4. Variant Customizer (Size & Color Swatches inside Buy Box) (Rule #13)
    ========================================================================== */
-.offer-box-container {
+.buy-box-container {
   background: var(--color-cream-card);
-  border: 1px solid var(--color-border);
+  border: 1.5px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: 24px;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.offer-box-header {
+.variant-picker-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.variant-picker-title-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
+  align-items: baseline;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--color-espresso);
 }
 
-.offer-box-title {
-  font-size: 18px;
+.variant-highlight {
+  color: var(--color-terracotta);
   font-weight: 800;
 }
 
-.live-viewers-pill {
+/* Size Options Grid */
+.size-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.size-btn {
+  background: var(--color-cream);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 4px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.size-btn:hover {
+  border-color: #D6A487;
+  background: #FFFDFC;
+}
+
+.size-btn.selected {
+  border-color: var(--color-terracotta);
+  background: var(--color-terracotta-light);
+  box-shadow: 0 2px 8px rgba(200, 100, 50, 0.16);
+}
+
+.size-title {
+  font-weight: 800;
+  font-size: 13.5px;
+  color: var(--color-espresso);
+}
+
+.size-meta {
+  font-size: 10.5px;
+  color: var(--color-espresso-muted);
+  font-weight: 600;
+}
+
+/* Color Swatches Row */
+.color-swatches-grid {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.color-swatch-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--color-cream);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-espresso);
+  transition: var(--transition-fast);
+}
+
+.color-swatch-btn:hover {
+  border-color: #D6A487;
+}
+
+.color-swatch-btn.selected {
+  border-color: var(--color-terracotta);
+  background: #FFFDFB;
+  box-shadow: 0 2px 8px rgba(200, 100, 50, 0.16);
+}
+
+.swatch-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.15);
+  display: inline-block;
+}
+
+/* ==========================================================================
+   5. 3-Tier Multi-Pack Bundle Selector (Rule #4)
+   ========================================================================== */
+.bundle-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bundle-section-title {
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.live-viewers-tag {
   font-size: 12px;
   color: var(--color-terracotta);
   font-weight: 700;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
 }
 
-.bundle-options-list {
+.bundle-cards-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 .bundle-card {
   position: relative;
   border: 2px solid var(--color-border);
   background: var(--color-cream);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   padding: 16px 18px;
   cursor: pointer;
   transition: var(--transition-fast);
   display: grid;
-  grid-template-columns: 24px 1fr auto;
+  grid-template-columns: 22px 1fr auto;
   align-items: center;
   gap: 14px;
 }
@@ -622,7 +631,7 @@ button {
 .bundle-card.selected {
   border-color: var(--color-terracotta);
   background: #FFFDFB;
-  box-shadow: 0 4px 16px rgba(200, 100, 50, 0.12);
+  box-shadow: 0 4px 18px rgba(200, 100, 50, 0.14);
 }
 
 .bundle-radio {
@@ -649,88 +658,78 @@ button {
   border-radius: 50%;
 }
 
-.bundle-details h4 {
+.bundle-info h4 {
   font-size: 15px;
   font-weight: 700;
   color: var(--color-espresso);
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
-.bundle-details p {
+.bundle-info p {
   font-size: 12.5px;
   color: var(--color-espresso-muted);
   margin-top: 2px;
 }
 
-.bundle-bonus-tag {
+.bundle-bonus-pill {
   color: var(--color-terracotta);
   font-weight: 700;
 }
 
-.bundle-pricing {
+.bundle-price-col {
   text-align: right;
 }
 
-.bundle-price-main {
+.price-main {
   font-size: 18px;
   font-weight: 800;
   color: var(--color-espresso);
 }
 
-.bundle-price-compare {
+.price-compare {
   font-size: 13px;
   color: #999;
   text-decoration: line-through;
 }
 
-.bundle-badge-ribbon {
+.bundle-ribbon {
   position: absolute;
   top: -10px;
-  right: 18px;
+  right: 16px;
   background: var(--color-terracotta);
   color: #fff;
   font-size: 10px;
   font-weight: 800;
-  padding: 3px 8px;
+  padding: 3px 9px;
   border-radius: var(--radius-full);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-.bundle-badge-ribbon.popular {
+.bundle-ribbon.popular {
   background: #D9480F;
 }
 
-/* Primary CTA Button */
-.cta-button-container {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
+/* Primary CTA Button (48px+ tap target) */
 .btn-primary-cta {
   background: var(--color-terracotta);
   color: #fff;
   font-size: 18px;
   font-weight: 800;
   padding: 18px 24px;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  box-shadow: 0 8px 24px rgba(200, 100, 50, 0.35);
-  transition: var(--transition-normal);
+  box-shadow: var(--shadow-terracotta);
+  transition: var(--transition-smooth);
 }
 
 .btn-primary-cta:hover {
   background: var(--color-terracotta-hover);
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(200, 100, 50, 0.45);
+  box-shadow: 0 12px 32px rgba(200, 100, 50, 0.44);
 }
 
 .guarantee-micro-note {
@@ -748,12 +747,13 @@ button {
   justify-content: center;
   align-items: center;
   gap: 12px;
-  margin-top: 8px;
-  opacity: 0.85;
+  font-size: 12px;
+  color: #8C7B70;
+  flex-wrap: wrap;
 }
 
 /* ==========================================================================
-   Trust & Press Bar
+   6. Press & Trust Bar
    ========================================================================== */
 .press-bar-section {
   padding: 36px 0;
@@ -769,7 +769,7 @@ button {
   letter-spacing: 1.5px;
   color: #8C7B70;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .press-logos-grid {
@@ -777,19 +777,19 @@ button {
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
-  gap: 32px;
-  opacity: 0.7;
+  gap: 28px;
+  opacity: 0.75;
 }
 
 .press-logo-item {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 800;
   color: #6E5C50;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.4px;
 }
 
 /* ==========================================================================
-   Comparison Section (Problem vs Solution)
+   7. Problem vs Solution Comparison Matrix (Cats & Dogs Focus)
    ========================================================================== */
 .comparison-section {
   padding: 80px 0;
@@ -831,7 +831,7 @@ button {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: 36px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-subtle);
 }
 
 .comparison-card.bad {
@@ -842,7 +842,7 @@ button {
 .comparison-card.good {
   border: 2px solid var(--color-terracotta);
   background: #FFFDFC;
-  box-shadow: var(--shadow-glass);
+  box-shadow: var(--shadow-card);
 }
 
 .comp-header {
@@ -853,15 +853,15 @@ button {
 }
 
 .comp-badge {
-  padding: 4px 10px;
+  padding: 4px 12px;
   border-radius: var(--radius-full);
   font-size: 12px;
   font-weight: 800;
 }
 
 .comp-badge.bad-badge {
-  background: var(--color-error-light);
-  color: var(--color-error);
+  background: #FDF0F0;
+  color: #D9383A;
 }
 
 .comp-badge.good-badge {
@@ -884,7 +884,7 @@ button {
 }
 
 .comp-list .icon-bad {
-  color: var(--color-error);
+  color: #D9383A;
   font-size: 18px;
   font-weight: bold;
 }
@@ -896,7 +896,7 @@ button {
 }
 
 /* ==========================================================================
-   4-Layer Product Anatomy Section
+   8. 4-Layer Product Anatomy
    ========================================================================== */
 .anatomy-section {
   padding: 80px 0;
@@ -914,7 +914,7 @@ button {
 .anatomy-layers-list {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
 }
 
 .layer-card {
@@ -928,7 +928,7 @@ button {
 .layer-card:hover {
   border-color: var(--color-terracotta);
   background: #FFF;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-subtle);
 }
 
 .layer-number {
@@ -951,7 +951,7 @@ button {
 }
 
 /* ==========================================================================
-   Customer Reviews & UGC Grid
+   9. Social Proof & Reviews (Calibrated to 2,500+ Happy Paws)
    ========================================================================== */
 .reviews-section {
   padding: 80px 0;
@@ -968,7 +968,7 @@ button {
   margin-bottom: 40px;
   flex-wrap: wrap;
   gap: 24px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-card);
 }
 
 .stat-box {
@@ -1001,7 +1001,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-subtle);
 }
 
 .review-header {
@@ -1024,7 +1024,7 @@ button {
   border-radius: var(--radius-full);
 }
 
-.dog-tag {
+.pet-type-tag {
   font-size: 12.5px;
   color: var(--color-terracotta);
   font-weight: 600;
@@ -1037,7 +1037,7 @@ button {
 }
 
 /* ==========================================================================
-   Sizing Guide & FAQ
+   10. Interactive Sizing Guide & Care FAQ
    ========================================================================== */
 .faq-section {
   padding: 80px 0;
@@ -1094,7 +1094,6 @@ button {
   display: block;
 }
 
-/* Sizing Calculator Table */
 .sizing-table {
   width: 100%;
   border-collapse: collapse;
@@ -1114,7 +1113,7 @@ button {
 }
 
 /* ==========================================================================
-   Guarantee Section
+   11. Risk-Free Guarantee Section
    ========================================================================== */
 .guarantee-section {
   padding: 72px 0;
@@ -1148,10 +1147,10 @@ button {
 }
 
 /* ==========================================================================
-   Footer
+   12. Footer (Rule #12: Tagline Underneath Title)
    ========================================================================== */
 .site-footer {
-  background: #251B13;
+  background: #241A12;
   color: #FAF8F5;
   padding: 64px 0 32px;
 }
@@ -1163,16 +1162,11 @@ button {
   margin-bottom: 48px;
 }
 
-.footer-brand h3 {
-  color: #fff;
-  font-size: 24px;
-  margin-bottom: 8px;
-}
-
 .footer-brand p {
   color: #C2B3A7;
   font-size: 14px;
   line-height: 1.6;
+  margin-top: 14px;
 }
 
 .footer-col h4 {
@@ -1209,7 +1203,7 @@ button {
   border: 1px solid #4F3C2F;
   color: #fff;
   padding: 12px 14px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xs);
   font-size: 14px;
   flex: 1;
 }
@@ -1224,7 +1218,7 @@ button {
   color: #fff;
   font-weight: 700;
   padding: 12px 18px;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xs);
   font-size: 14px;
 }
 
@@ -1239,16 +1233,16 @@ button {
 }
 
 /* ==========================================================================
-   Mobile-First Sticky CTA Bar (Rule #4)
+   13. Mobile-First Sticky CTA Bar (Rule #4)
    ========================================================================== */
 .mobile-sticky-cta {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(250, 248, 245, 0.96);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(250, 248, 245, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-top: 1px solid var(--color-border);
   padding: 12px 16px;
   display: flex;
@@ -1311,26 +1305,22 @@ button {
 }
 
 /* ==========================================================================
-   Responsive Breakpoints
+   14. Responsive Breakpoints
    ========================================================================== */
 @media (max-width: 992px) {
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 36px;
   }
-  
   .gallery-wrapper {
     position: static;
   }
-  
   .comparison-grid, .anatomy-grid {
     grid-template-columns: 1fr;
   }
-  
   .reviews-cards-grid {
     grid-template-columns: 1fr 1fr;
   }
-  
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -1340,24 +1330,19 @@ button {
   .nav-links {
     display: none;
   }
-  
   .hero-headline {
     font-size: 28px;
   }
-  
   .reviews-cards-grid {
     grid-template-columns: 1fr;
   }
-  
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  
   .footer-bottom {
     flex-direction: column;
     gap: 12px;
     text-align: center;
   }
 }
-

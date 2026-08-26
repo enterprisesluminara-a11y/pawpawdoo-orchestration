@@ -1,6 +1,7 @@
 /**
  * PawPawDoo DTC Storefront Interactive Logic & CRO Engine
  * Brand: PawPawDoo | Tagline: "Pawmily first."
+ * Dual Pet Positioning: Cats & Dogs
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,33 +16,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // 0. Variant Selectors (Size & Color - Rule #13)
 let currentSelectedSize = 'M';
-let currentSelectedColor = 'Cloud Cream';
+let currentSelectedColor = 'Cream Velvet';
 
 function initVariantSelectors() {
-  const sizeBtns = document.querySelectorAll('.size-option-btn');
-  const sizeLabel = document.getElementById('selectedSizeLabel');
+  const sizeBtns = document.querySelectorAll('.size-btn');
+  const sizeDisplay = document.getElementById('selectedSizeDisplay');
   
   sizeBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       sizeBtns.forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
       currentSelectedSize = btn.dataset.size;
-      if (sizeLabel && btn.dataset.label) {
-        sizeLabel.textContent = btn.dataset.label;
+      if (sizeDisplay && btn.dataset.label) {
+        sizeDisplay.textContent = btn.dataset.label;
       }
     });
   });
 
   const colorBtns = document.querySelectorAll('.color-swatch-btn');
-  const colorLabel = document.getElementById('selectedColorLabel');
+  const colorDisplay = document.getElementById('selectedColorDisplay');
+  const mainImage = document.getElementById('mainHeroImage');
   
+  // High quality lifestyle color maps
+  const colorImageMap = {
+    'Cream Velvet': 'https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=1000&q=80',
+    'Terracotta Cloud': 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=1000&q=80',
+    'Slate Grey': 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=80'
+  };
+
   colorBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       colorBtns.forEach(b => b.classList.remove('selected'));
       btn.classList.add('selected');
       currentSelectedColor = btn.dataset.color;
-      if (colorLabel) {
-        colorLabel.textContent = currentSelectedColor;
+      if (colorDisplay) {
+        colorDisplay.textContent = currentSelectedColor;
+      }
+      if (mainImage && colorImageMap[currentSelectedColor]) {
+        mainImage.src = colorImageMap[currentSelectedColor];
       }
     });
   });
@@ -51,12 +63,12 @@ function initVariantSelectors() {
 const BUNDLE_DATA = {
   1: {
     quantity: 1,
-    title: '1x Orthopedic Cloud Pet Bed',
+    title: '1x Calming Cloud Pet Bed',
     price: 78.95,
     compareAt: 102.64,
     savings: '$23.69 (Save 23%)',
     badge: 'Standard Pack',
-    bonus: 'Standard Packaging',
+    bonus: 'Standard Tracked Dispatch',
     sku: 'DS-PPD-BED-001',
     variantId: '15345170022445'
   },
@@ -113,7 +125,7 @@ function initBundleSelector() {
     });
   });
 
-  // Main CTA Click Handler
+  // Main Checkout Trigger Buttons
   const checkoutButtons = document.querySelectorAll('.trigger-checkout');
   checkoutButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -124,13 +136,13 @@ function initBundleSelector() {
 
 function handleCheckout(tier) {
   const data = BUNDLE_DATA[tier];
-  console.log(`[PawPawDoo Checkout] Initiating checkout for Tier ${tier}:`, data);
+  console.log(`[PawPawDoo Checkout] Initiating checkout for Tier ${tier} (${currentSelectedSize} / ${currentSelectedColor}):`, data);
   
-  // Construct direct Shopify checkout URL
+  // Construct direct Shopify checkout URL with selected attributes
   const shopifyDomain = 'pawpawdoo.store';
-  const checkoutUrl = `https://${shopifyDomain}/cart/${data.variantId}:${data.quantity}?ref=pawpawdoo-direct`;
+  const checkoutUrl = `https://${shopifyDomain}/cart/${data.variantId}:${data.quantity}?attributes[size]=${encodeURIComponent(currentSelectedSize)}&attributes[color]=${encodeURIComponent(currentSelectedColor)}&ref=pawpawdoo-direct`;
   
-  // Open checkout or notify
+  // Open checkout in new tab
   window.open(checkoutUrl, '_blank');
 }
 
@@ -177,7 +189,7 @@ function initGallery() {
   });
 }
 
-// 4. FAQ & Sizing Accordion
+// 4. FAQ Accordion
 function initFaqAccordion() {
   const faqItems = document.querySelectorAll('.faq-item');
 
@@ -193,7 +205,7 @@ function initFaqAccordion() {
   });
 }
 
-// 5. Mobile Sticky CTA Bar Trigger (Rule #4)
+// 5. Mobile Sticky CTA Bar (Rule #4)
 function initStickyCtaBar() {
   const stickyBar = document.getElementById('mobileStickyCta');
   if (!stickyBar) return;
@@ -208,11 +220,11 @@ function initStickyCtaBar() {
   });
 }
 
-// 6. Live Social Proof Ticker
+// 6. Live Social Proof Popups (Cats & Dogs Calibrated)
 function initSocialProofPopups() {
   const cities = ['Austin, TX', 'Seattle, WA', 'Denver, CO', 'Chicago, IL', 'San Diego, CA', 'Miami, FL', 'Nashville, TN'];
-  const names = ['Jessica M.', 'David K.', 'Emily R.', 'Michael B.', 'Sarah T.', 'Amanda L.'];
-  const packs = ['2-Pack Multi-Room Bundle', '1x Cloud Bed', '3-Pack Fur-Family Bundle'];
+  const names = ['Sarah & Duke 🐕', 'Elena & Oliver 🐱', 'Chloe & Dave 🐾', 'Marcus & Luna 🐶', 'Jessica & Cleo 🐱'];
+  const packs = ['2-Pack Multi-Room Bundle (Cream Velvet)', '1x Calming Cloud Bed (Terracotta Cloud)', '3-Pack Fur-Family Bundle (Slate Grey)'];
 
   const popup = document.createElement('div');
   popup.className = 'live-sales-popup';
@@ -221,7 +233,7 @@ function initSocialProofPopups() {
     bottom: 90px;
     left: 20px;
     background: #FFFFFF;
-    border: 1px solid #EADBCE;
+    border: 1px solid #E8DED4;
     box-shadow: 0 8px 24px rgba(55,40,29,0.12);
     border-radius: 12px;
     padding: 12px 16px;
@@ -243,10 +255,10 @@ function initSocialProofPopups() {
     const randomMins = Math.floor(Math.random() * 8) + 1;
 
     popup.innerHTML = `
-      <div style="width: 38px; height: 38px; background: #F7EAE3; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px;">🐾</div>
+      <div style="width: 38px; height: 38px; background: #F8ECE4; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px;">🐾</div>
       <div>
         <div style="font-weight: 700; color: #37281D;">${randomName} from ${randomCity}</div>
-        <div style="color: #5E4A3E; font-size: 12px;">Purchased <strong>${randomPack}</strong> (${randomMins}m ago)</div>
+        <div style="color: #67564A; font-size: 12px;">Purchased <strong>${randomPack}</strong> (${randomMins}m ago)</div>
       </div>
     `;
 
@@ -256,10 +268,8 @@ function initSocialProofPopups() {
     }, 5000);
   }
 
-  // First trigger after 6 seconds, then every 24 seconds
   setTimeout(() => {
     showNotification();
     setInterval(showNotification, 24000);
-  }, 6000);
+  }, 5000);
 }
-
