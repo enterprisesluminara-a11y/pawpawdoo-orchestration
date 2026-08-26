@@ -1,0 +1,100 @@
+{% comment %}
+  PawPawDoo - Hero Cloud Bed Section
+  Theme 2.0 Compatible Liquid Section
+{% endcomment %}
+
+<section class="pawpawdoo-hero-section section-{{ section.id }}" style="background-color: {{ section.settings.bg_color }}; padding: 48px 0;">
+  <div class="page-width">
+    <div class="grid grid--1-col grid--2-col-desktop">
+      
+      <!-- Gallery Column -->
+      <div class="grid__item">
+        <div class="hero-media-wrapper">
+          {% if section.settings.hero_image != blank %}
+            <img src="{{ section.settings.hero_image | image_url: width: 1000 }}" alt="{{ section.settings.heading | escape }}" loading="eager" class="responsive-img">
+          {% else %}
+            <img src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=1000&q=80" alt="PawPawDoo Cloud Dog Bed" class="responsive-img">
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Content Column -->
+      <div class="grid__item hero-content-col">
+        <div class="rating-badge" style="color: #E29D38; font-weight: 700; margin-bottom: 12px;">
+          ★★★★★ 4.9/5.0 (14,800+ Pet Parents)
+        </div>
+        
+        <h1 style="color: #37281D; font-size: 2.4rem; font-weight: 800; line-height: 1.2; margin-bottom: 16px;">
+          {{ section.settings.heading }}
+        </h1>
+        
+        <p style="color: #5E4A3E; font-size: 1.1rem; line-height: 1.6; margin-bottom: 24px;">
+          {{ section.settings.subheading }}
+        </p>
+
+        <div class="logistics-pill" style="background: #EBF2ED; border: 1px solid #4A7C59; color: #2D5239; padding: 12px 16px; border-radius: 8px; font-weight: 600; margin-bottom: 24px;">
+          🚀 Ships Fast in 3–5 Days from US Warehouse (Tracked USPS)
+        </div>
+
+        <ul class="value-props-list" style="list-style: none; padding: 0; margin-bottom: 28px;">
+          <li style="margin-bottom: 10px; font-size: 1rem; color: #37281D;">🐾 <strong>Pawmily first:</strong> Orthopedic memory foam relieves hip dysplasia & joint pain.</li>
+          <li style="margin-bottom: 10px; font-size: 1rem; color: #37281D;">🐾 <strong>360° Raised Rim:</strong> Simulates a mother's embrace to melt anxiety.</li>
+          <li style="margin-bottom: 10px; font-size: 1rem; color: #37281D;">🐾 <strong>100% Washable:</strong> Zippered waterproof lining resists slobber & odors.</li>
+        </ul>
+
+        <a href="{{ section.settings.cta_link | default: '#bundle-tiers' }}" class="button button--primary" style="background: #C86432; color: #fff; padding: 16px 28px; border-radius: 8px; font-weight: 700; font-size: 1.1rem; text-decoration: none; display: inline-block;">
+          {{ section.settings.cta_text }}
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PawPawDoo Hero Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Headline",
+      "default": "Give Your Furry Best Friend The Cloud Sleep They Deserve — Because It's Pawmily first."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheadline",
+      "default": "Engineered with orthopedic memory foam & anxiety-melting faux fur to soothe joints and melt stress within 5 minutes."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Claim Your Cloud Bed — Save up to 22%"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FAF8F5"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PawPawDoo Hero Banner"
+    }
+  ]
+}
+{% endschema %}
+

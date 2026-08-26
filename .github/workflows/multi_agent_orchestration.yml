@@ -1,0 +1,57 @@
+name: PawPawDoo Multi-Agent Cloud Orchestration
+
+on:
+  workflow_dispatch:
+    inputs:
+      product_name:
+        description: 'Product Name to Research & Build'
+        required: false
+        default: 'Orthopedic Calming Cloud Dog Bed'
+      target_price:
+        description: 'Target Selling Price ($)'
+        required: false
+        default: '78.95'
+  schedule:
+    # Run daily at 06:00 UTC
+    - cron: '0 6 * * *'
+
+jobs:
+  orchestrate-hero-product:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Multi-Agent Self-Healing Pipeline
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SHOPIFY_STORE_URL: ${{ secrets.SHOPIFY_STORE_URL }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          SHOPIFY_ADMIN_ACCESS_TOKEN: ${{ secrets.SHOPIFY_ADMIN_ACCESS_TOKEN }}
+          PAWPAWDOO_ENV: DRAFT
+        run: |
+          python run_team.py
+
+      - name: Upload Blueprints & Deliverables
+        uses: actions/upload-artifact@v4
+        with:
+          name: pawpawdoo-launch-blueprints
+          path: |
+            output_google_doc_blueprint.md
+            output_website_revamp_blueprint.md
+            AGENT_INSTRUCTIONS.md
+
