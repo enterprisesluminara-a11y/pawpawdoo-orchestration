@@ -179,39 +179,21 @@ button {
   height: 76px;
 }
 
-/* High-End Vertical Brand Lockup (Rule #12) */
+/* High-End Vertical Brand Lockup (Rule #12: Logo + Tagline Directly Underneath) */
 .brand-lockup {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-}
-
-.brand-icon-box {
-  width: 42px;
-  height: 42px;
-  background: var(--color-terracotta);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 22px;
-  box-shadow: 0 4px 12px rgba(200, 100, 50, 0.28);
-  flex-shrink: 0;
-}
-
-.brand-text-stack {
-  display: flex;
   flex-direction: column;
-  line-height: 1.05;
+  align-items: flex-start;
+  text-decoration: none;
+  gap: 2px;
 }
 
-.brand-name {
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: -0.6px;
-  color: var(--color-espresso);
+.brand-logo-svg {
+  height: 36px;
+  width: auto;
+  max-width: 180px;
+  display: block;
+  object-fit: contain;
 }
 
 .brand-tagline-underneath {
@@ -219,8 +201,9 @@ button {
   font-weight: 700;
   color: var(--color-terracotta);
   letter-spacing: 0.4px;
-  margin-top: 3px;
+  margin-top: 2px;
   font-style: italic;
+  padding-left: 2px;
 }
 
 .nav-links {

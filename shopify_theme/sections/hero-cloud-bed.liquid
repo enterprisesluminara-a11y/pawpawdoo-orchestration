@@ -4,28 +4,28 @@
     <!-- Left: Gallery -->
     <div class="gallery-wrapper">
       <div class="main-image-container">
-        <span class="badge-overlay-top-left">🔥 68% Pick Multi-Pack</span>
+        <span class="badge-overlay-top-left">🔥 68% Choose Multi-Pack</span>
         <span class="badge-overlay-top-right">🛡️ 30-Night Guarantee</span>
         <img 
           id="mainHeroImage" 
           class="main-hero-img" 
-          src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=1000&q=80" 
-          alt="PawPawDoo Orthopedic Calming Cloud Dog Bed"
+          src="{{ 'hero-cat-and-dog-banner.png' | asset_url }}" 
+          alt="PawPawDoo Calming Cloud Pet Bed with Dogs & Cats"
         >
       </div>
 
       <div class="thumbnails-row">
-        <div class="thumb-item active" data-full-src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=1000&q=80">
-          <img src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=200&q=80" alt="Cloud Bed">
+        <div class="thumb-item active" data-full-src="{{ 'hero-cat-and-dog-banner.png' | asset_url }}">
+          <img src="{{ 'hero-cat-and-dog-banner.png' | asset_url }}" alt="Dogs & Cats Cloud Bed">
         </div>
-        <div class="thumb-item" data-full-src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=1000&q=80">
-          <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=200&q=80" alt="Puppy Sleeping">
+        <div class="thumb-item" data-full-src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=1000&q=80">
+          <img src="https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=200&q=80" alt="Dog in Cloud Bed">
         </div>
-        <div class="thumb-item" data-full-src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=1000&q=80">
-          <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=200&q=80" alt="Bolster Rim">
+        <div class="thumb-item" data-full-src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=1000&q=80">
+          <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=200&q=80" alt="Cat in Cloud Bed">
         </div>
         <div class="thumb-item" data-full-src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1000&q=80">
-          <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=200&q=80" alt="Orthopedic Memory Foam">
+          <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=200&q=80" alt="Plush Memory Foam">
         </div>
       </div>
     </div>
@@ -33,16 +33,16 @@
     <!-- Right: Offer Content -->
     <div class="hero-content">
       
-      <div class="rating-social-row">
+      <div class="social-rating-pill">
         <span class="stars">★★★★★</span>
         <span class="rating-score">4.9 / 5.0</span>
-        <span class="reviews-count">(14,820+ Verified Dog Parents)</span>
+        <span class="reviews-count">(2,500+ Happy Paws)</span>
       </div>
 
-      <h1 class="hero-headline">Give Your Furry Best Friend The Cloud Sleep They Deserve — Because It's <span style="color: var(--color-terracotta);">Pawmily first.</span></h1>
+      <h1 class="hero-headline">Give Your Furry Best Friends The Cloud Sleep They Deserve — Because It's <span style="color: #C86432;">Pawmily first.</span></h1>
       
       <p class="hero-subheadline">
-        Engineered with human-grade orthopedic memory foam and anxiety-melting faux fur bolsters to soothe joints and ease stress within 5 minutes.
+        Warm, ultra-plush calming cloud comfort for both dogs and cats. Melts daily anxiety, cradles tired joints, and creates an irresistible nesting haven in your home.
       </p>
 
       <div class="logistics-banner-card">
@@ -53,75 +53,113 @@
       </div>
 
       <ul class="value-props-list">
-        <li><span class="check-icon">✓</span> <span><strong>Veterinarian Approved:</strong> Relieves hip dysplasia & joint stiffness.</span></li>
-        <li><span class="check-icon">✓</span> <span><strong>Instant Anxiety Relief:</strong> 360° raised rim simulates mother's embrace.</span></li>
+        <li><span class="check-icon">✓</span> <span><strong>All-Pet Nesting Bolster:</strong> 360° soothing faux-fur rim provides instant security for dogs & cats.</span></li>
+        <li><span class="check-icon">✓</span> <span><strong>Gentle Pressure Relief:</strong> High-density memory foam prevents morning stiffness and aches.</span></li>
         <li><span class="check-icon">✓</span> <span><strong>100% Machine Washable:</strong> Removable zippered waterproof lining.</span></li>
-        <li><span class="check-icon">✓</span> <span><strong>Non-Slip Grip Base:</strong> Safely anchored on hardwood floors.</span></li>
+        <li><span class="check-icon">✓</span> <span><strong>Non-Slip Gripper Base:</strong> Stays safely anchored on hardwood and tile floors.</span></li>
       </ul>
 
-      <!-- Bundle Box -->
-      <div class="offer-box-container">
-        <div class="offer-box-header">
-          <span class="offer-box-title">Select Your Bundle & Save:</span>
-          <span class="live-viewers-pill">⚡ 48 viewing</span>
+      <!-- Buy Box Container -->
+      <div class="buy-box-container">
+        
+        <!-- Size Selector -->
+        <div>
+          <div class="variant-picker-title-row">
+            <span>Select Size:</span>
+            <span class="variant-highlight" id="selectedSizeDisplay">Medium (32") — Dogs & Cats (25–50 lbs)</span>
+          </div>
+          <div class="size-selector-grid" style="margin-top: 8px;">
+            <div class="size-btn" data-size="S" data-label="Small (24&quot;) — Cats & Small Pups (Up to 25 lbs)">
+              <span class="size-title">🐱 Small (24")</span>
+              <span class="size-meta">&lt; 25 lbs</span>
+            </div>
+            <div class="size-btn selected" data-size="M" data-label="Medium (32&quot;) — Dogs & Cats (25–50 lbs)">
+              <span class="size-title">🐶 Medium (32")</span>
+              <span class="size-meta">25–50 lbs</span>
+            </div>
+            <div class="size-btn" data-size="L" data-label="Large (40&quot;) — Large Dogs (50–80 lbs)">
+              <span class="size-title">🐕 Large (40")</span>
+              <span class="size-meta">50–80 lbs</span>
+            </div>
+            <div class="size-btn" data-size="XL" data-label="Extra Large (48&quot;) — Giant Breeds & Pairs (80+ lbs)">
+              <span class="size-title">🐾 XL (48")</span>
+              <span class="size-meta">80+ lbs</span>
+            </div>
+          </div>
         </div>
 
-        <div class="bundle-options-list">
+        <!-- Color Swatches -->
+        <div>
+          <div class="variant-picker-title-row">
+            <span>Select Color:</span>
+            <span class="variant-highlight" id="selectedColorDisplay">Cream Velvet</span>
+          </div>
+          <div class="color-swatches-grid" style="margin-top: 8px;">
+            <div class="color-swatch-btn selected" data-color="Cream Velvet">
+              <span class="swatch-dot" style="background-color: #FAF5EE;"></span>
+              <span>Cream Velvet</span>
+            </div>
+            <div class="color-swatch-btn" data-color="Terracotta Cloud">
+              <span class="swatch-dot" style="background-color: #C86432;"></span>
+              <span>Terracotta Cloud</span>
+            </div>
+            <div class="color-swatch-btn" data-color="Slate Grey">
+              <span class="swatch-dot" style="background-color: #6B6560;"></span>
+              <span>Slate Grey</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bundles -->
+        <div class="bundle-cards-list" style="margin-top: 16px;">
           <div class="bundle-card" data-tier="1">
             <div class="bundle-radio"></div>
-            <div class="bundle-details">
-              <h4>1x Cloud Dog Bed</h4>
-              <p>Standard Pack for Single Room</p>
+            <div class="bundle-info">
+              <h4>1x Calming Cloud Pet Bed</h4>
+              <p>Standard Single Room Pack</p>
             </div>
-            <div class="bundle-pricing">
-              <div class="bundle-price-main">$78.95</div>
-              <div class="bundle-price-compare">$102.64</div>
+            <div class="bundle-price-col">
+              <div class="price-main">$78.95</div>
+              <div class="price-compare">$102.64</div>
             </div>
           </div>
 
           <div class="bundle-card selected" data-tier="2">
-            <span class="bundle-badge-ribbon popular">68% CHOOSE THIS — BEST VALUE</span>
+            <span class="bundle-ribbon popular">68% CHOOSE THIS — BEST VALUE</span>
             <div class="bundle-radio"></div>
-            <div class="bundle-details">
-              <h4>2x Multi-Room Pack (Living Room + Bedroom)</h4>
-              <p><span class="bundle-bonus-tag">+ Free Odor-Eliminating Paw Care Guide</span></p>
+            <div class="bundle-info">
+              <h4>2x Multi-Room / Multi-Pet Pack (Living Room + Bedroom)</h4>
+              <p><span class="bundle-bonus-pill">+ Free Odor-Eliminating Paw Care Guide</span></p>
             </div>
-            <div class="bundle-pricing">
-              <div class="bundle-price-main">$134.22</div>
-              <div class="bundle-price-compare">$205.28</div>
-              <div style="font-size: 11px; color: var(--color-terracotta); font-weight: 700;">SAVE 15%</div>
+            <div class="bundle-price-col">
+              <div class="price-main">$134.22</div>
+              <div class="price-compare">$205.28</div>
+              <div style="font-size: 11px; color: #C86432; font-weight: 700;">SAVE 15%</div>
             </div>
           </div>
 
           <div class="bundle-card" data-tier="3">
-            <span class="bundle-badge-ribbon">MAXIMUM SAVINGS</span>
+            <span class="bundle-ribbon">MAXIMUM SAVINGS</span>
             <div class="bundle-radio"></div>
-            <div class="bundle-details">
+            <div class="bundle-info">
               <h4>3x Ultimate Fur-Family Pack (Multi-Pet)</h4>
-              <p><span class="bundle-bonus-tag">+ Free Spare Cover & Grooming Glove</span></p>
+              <p><span class="bundle-bonus-pill">+ Free Spare Cover & Grooming Glove</span></p>
             </div>
-            <div class="bundle-pricing">
-              <div class="bundle-price-main">$185.53</div>
-              <div class="bundle-price-compare">$307.92</div>
-              <div style="font-size: 11px; color: var(--color-terracotta); font-weight: 700;">SAVE 22%</div>
+            <div class="bundle-price-col">
+              <div class="price-main">$185.53</div>
+              <div class="price-compare">$307.92</div>
+              <div style="font-size: 11px; color: #C86432; font-weight: 700;">SAVE 22%</div>
             </div>
           </div>
         </div>
 
-        <div class="cta-button-container">
+        <div style="margin-top: 16px;">
           <button class="btn-primary-cta trigger-checkout" id="mainCtaButton">
             <span id="mainCtaText">Claim Your Multi-Room Pack — $134.22 (Save 35%)</span>
             <span>➔</span>
           </button>
-          
-          <div class="guarantee-micro-note">
-            <span>🛡️ 30-Night Risk-Free Trial</span>
-            <span>•</span>
-            <span>📦 Free Express Shipping</span>
-            <span>•</span>
-            <span>🔒 SSL 256-Bit Encrypted</span>
-          </div>
         </div>
+
       </div>
 
     </div>
@@ -135,4 +173,3 @@
   "settings": []
 }
 {% endschema %}
-
