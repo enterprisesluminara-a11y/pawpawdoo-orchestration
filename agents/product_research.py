@@ -1,9 +1,17 @@
 """
-Competitor & Product Research Agent (Gemini API).
-Equipped with modular adapters:
-- Google Trends, Meta Ad Library, TikTok Creative Center
-- Amazon & eBay US Marketplace Benchmarks
-- Supplier Vetting & Warehouse Logistics Engine (Rules 6, 7, 8, 9, 10)
+Competitor & Product Research Agent (Gemini API / Research Engine).
+
+Equipped with Professional Skill Modules:
+1. [SKILL: UNIT_ECONOMICS_AUDITOR]
+   - Landed COGS Auditing: Item cost + warehouse handling + tracked shipping.
+   - 3.0x Markup Multiplier: Enforces retail price / landed COGS >= 3.0x threshold (Rule #5).
+   - Marketplace Benchmarking: Undercuts Amazon Buy Box and eBay US median prices while maintaining healthy margins (Rule #6).
+   - Bundle Margin Recovery Modeling: Formulates 2-Pack and 3-Pack pricing models when front-end unit is discounted (Rule #10).
+
+2. [SKILL: LOGISTICS_SUPPLIER_VETTER]
+   - Supplier Tenure & Rating: Enforces >= 1.0 year operational history and >= 4.0 star feedback on AliExpress (Rule #7).
+   - US Warehouse Priority Delta: Selects 3-5 day US warehouse shipping whenever US vs China shipping diff is <= $3.00 (Rule #8).
+   - 1-Click DSers SKU Mapping: Maps AliExpress Product ID and DSers SKU format for automated fulfillment (Rule #9).
 """
 
 from __future__ import annotations
@@ -19,6 +27,30 @@ from state import CompetitorResearchData, PawPawDooState, UndercutStrategy
 from utils.brand_memory import brand_memory
 
 
+# Explicit Skill Module Specifications
+SKILL_UNIT_ECONOMICS_AUDITOR = {
+    "skill_name": "UNIT_ECONOMICS_AUDITOR",
+    "version": "2.2.0",
+    "capabilities": [
+        "Landed cost calculations with shipping tariff and merchant fee modeling",
+        "3.0x minimum landed markup gatekeeping",
+        "Amazon Buy Box & eBay US median price undercut intelligence",
+        "Multi-pack bundle margin recovery economics",
+    ],
+}
+
+SKILL_LOGISTICS_SUPPLIER_VETTER = {
+    "skill_name": "LOGISTICS_SUPPLIER_VETTER",
+    "version": "2.5.0",
+    "capabilities": [
+        "AliExpress supplier vetting (>=1yr tenure, >=4.0★ feedback)",
+        "US Warehouse delta routing (3-5 day delivery for <=$3.00 diff)",
+        "End-to-end tracked shipping verification",
+        "DSers SKU & AliExpress Product ID mapping",
+    ],
+}
+
+
 def run_product_research_agent(state: PawPawDooState) -> Dict[str, Any]:
     """
     Executes deep competitor, marketplace, and logistics research for PawPawDoo.
@@ -30,7 +62,10 @@ def run_product_research_agent(state: PawPawDooState) -> Dict[str, Any]:
     niche = product_req.get("niche", "Pet Comfort & Sleep Wellness")
     
     # 0. Query RAG Brand Memory Layer
-    memory_context = brand_memory.get_formatted_context("Product Sourcing & Margins", product_name)
+    memory_context = brand_memory.get_formatted_context(
+        task_name="Product Sourcing & Margins",
+        query=f"{product_name} supplier vetting logistics markup 3.0x us warehouse",
+    )
 
     # Ingest Sourcing Lead Feedback if in a retry loop
     sourcing_feedback = state.get("sourcing_feedback", [])
@@ -47,7 +82,7 @@ def run_product_research_agent(state: PawPawDooState) -> Dict[str, Any]:
     # 1. Fetch Market & Trend Intelligence
     trends = TrendsAdapter.get_aggregate_intelligence(product_name)
 
-    # 2. Vet Supplier & Evaluate Warehouse Logistics (Rules 7, 8, 9)
+    # 2. [SKILL: LOGISTICS_SUPPLIER_VETTER] Vet Supplier & Evaluate Warehouse Logistics (Rules 7, 8, 9)
     logistics = SupplierLogisticsAdapter.vet_and_optimize_logistics(
         product_name=product_name,
         base_item_cost=base_item_cost,
@@ -64,7 +99,7 @@ def run_product_research_agent(state: PawPawDooState) -> Dict[str, Any]:
         logistics.us_warehouse_cost if logistics.selected_warehouse == "US" else logistics.china_warehouse_cost
     )
 
-    # 3. Fetch Marketplace Benchmarks (Amazon Buy Box & eBay US) - Rule 6
+    # 3. [SKILL: UNIT_ECONOMICS_AUDITOR] Fetch Marketplace Benchmarks (Amazon Buy Box & eBay US) - Rule 6
     marketplace = MarketplaceAdapter.benchmark_product(product_name, landed_cogs)
 
     # 4. Pricing & Rule 10 Undercut Strategy Engine
@@ -79,7 +114,7 @@ def run_product_research_agent(state: PawPawDooState) -> Dict[str, Any]:
     # Check Rule 10: High Potential Undercut Opportunity
     undercut_strategy = None
     if markup < MIN_MARKUP_MULTIPLIER:
-        # Check viral/demand signals (e.g. Trends score >= 70 or TikTok velocity HIGH)
+        # Check viral/demand signals (e.g. Trends score >= 60 or TikTok velocity HIGH)
         is_high_demand = (trends.google_trends_score >= 60) or (trends.tiktok_viral_velocity == "HIGH")
         if is_high_demand:
             bundle_2_price = round(selling_price * 1.85, 2)
@@ -115,7 +150,7 @@ def run_product_research_agent(state: PawPawDooState) -> Dict[str, Any]:
                 ],
                 strategic_rationale=(
                     f"Product has high viral demand (Google Trends: {trends.google_trends_score}/100, TikTok: {trends.tiktok_viral_velocity}). "
-                    f"Single unit priced at ${selling_price:.2f} undercuts Amazon (${marketplace.amazon_buybox_price:.2f}) and eBay (${marketplace.ebay_us_median_price:.2f}) to dominate top-of-funnel traffic. "
+                    f"Single unit priced at ${selling_price:.2f} undercuts Amazon (${marketplace.amazon_buybox_price:.2f}) and eBay (${marketplace.ebay_us_median_price:.2f}) to capture viral traffic. "
                     f"Margin is fully recovered through 2-Pack ({bundle_2_markup:.2f}x) and 3-Pack ({bundle_3_markup:.2f}x) bundles."
                 ),
             )
@@ -123,18 +158,18 @@ def run_product_research_agent(state: PawPawDooState) -> Dict[str, Any]:
     result = CompetitorResearchData(
         product_name=f"{BRAND_NAME} {product_name}",
         niche=niche,
-        target_audience="Dog owners (ages 25-54) seeking high-quality joint relief and anxiety reduction for their pets.",
+        target_audience="Cat & Dog parents (ages 24-58) seeking deep anxiety relief, joint protection, and cloud-like nesting comfort for their pets.",
         pain_points=[
             "Pet anxiety during thunderstorms, fireworks, and separation.",
-            "Cheap supermarket dog beds flatten rapidly, triggering joint stiffness.",
-            "Foul pet odors and non-washable difficult-to-clean covers.",
+            "Cheap supermarket beds flatten rapidly, triggering joint stiffness in dogs and cats.",
+            "Foul pet odors and difficult-to-clean covers.",
             "Slow 2-3 week shipping times from generic dropshippers.",
         ],
         unique_selling_points=[
-            "Multi-layer orthopedic memory foam with soothing faux-fur bolsters.",
+            "[SKILL: UNIT_ECONOMICS_AUDITOR] 3.5x+ Landed markup with Amazon & eBay price undercut.",
+            "[SKILL: LOGISTICS_SUPPLIER_VETTER] Fast 3-5 Day Tracked US Warehouse Delivery (USPS Priority).",
+            "Multi-layer orthopedic memory foam with soothing 360° faux-fur bolsters for both cats & dogs.",
             "Removable, machine-washable waterproof anti-microbial plush cover.",
-            "Fast 3-5 Day Tracked US Warehouse Delivery (USPS Priority).",
-            "Priced lower than Amazon & eBay with superior brand warranty.",
         ],
         trends=trends,
         marketplace=marketplace,

@@ -269,3 +269,4 @@ Critical Negative Constraints (ANTI-PATTERNS TO STRICTLY AVOID):
 
 # Global Singleton Instance
 brand_memory = BrandMemoryBank()
+
